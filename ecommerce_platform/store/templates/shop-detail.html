@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>{{ product.name }}</title>
+{% endblock %}
+
+{% block content %}
+        {% include 'partials/single-page-header.html' with page_title="Shop Detail" %}
+
+        <!-- Single Product Start -->
+        <div class="container-fluid py-5 mt-5">
+            <div class="container py-5">
+                <div class="row g-4 mb-5">
+                    <div class="col-lg-8 col-xl-9">
+                        <div class="row g-4">
+                            <div class="col-lg-6">
+                                <div class="border rounded">
+                                    <a href="{% url 'store:product_page' product.slug %}">
+                                        <img src="{{ product.image.url }}" class="img-fluid rounded" alt="Image">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <h4 class="fw-bold mb-3">{{ product.name }}</h4>
+                                <p class="mb-3">Category: {{ category.name }}</p>
+                                <h5 class="fw-bold mb-3">${{ product.price }}</h5>
+                                <div class="d-flex mb-4">
+                                    {% for i in '12345' %}
+                                        {% if forloop.counter <= product.rating %}
+                                            <i class="fa fa-star text-secondary"></i>
+                                        {% else %}
+                                            <i class="fa fa-star"></i>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <p class="mb-4">{{ product.description }}</p>
+                                <div class="input-group quantity mb-5" style="width: 100px;">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                    <input type="text" class="form-control form-control-sm text-center border-0" value="1">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-sm btn-plus rounded-circle bg-light border">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                            </div>
+                            <div class="col-lg-12">
+                                <nav>
+                                    <div class="nav nav-tabs mb-3">
+                                        <button class="nav-link active border-white border-bottom-0" type="button" role="tab"
+                                            id="nav-about-tab" data-bs-toggle="tab" data-bs-target="#nav-about"
+                                            aria-controls="nav-about" aria-selected="true">Description</button>
+                                        <button class="nav-link border-white border-bottom-0" type="button" role="tab"
+                                            id="nav-mission-tab" data-bs-toggle="tab" data-bs-target="#nav-mission"
+                                            aria-controls="nav-mission" aria-selected="false">Reviews</button>
+                                    </div>
+                                </nav>
+                                <div class="tab-content mb-5">
+                                    <div class="tab-pane active" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
+                                        <p><b>Ingredients: </b>{{ product.ingredients }}</p>
+                                        {% if product.contains_caffeine %}
+                                            <p><i>Contains caffeine.</i></p>
+                                        {% else %}
+                                            <p><i>Caffeine free.</i></p>
+                                        {% endif %}
+                                    </div>
+                                    <div class="tab-pane" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
+                                        <div class="d-flex">
+                                            <img src="{% static 'img/avatar.jpeg' %}" class="img-fluid rounded-circle p-3" style="width: 100px; height: 100px;" alt="">
+                                            <div class="">
+                                                <p class="mb-2" style="font-size: 14px;">April 29, 2024</p>
+                                                <div class="d-flex justify-content-between">
+                                                    <h5>Kim L.</h5>
+                                                    <div class="d-flex mb-3">
+                                                        <i class="fa fa-star text-secondary"></i>
+                                                        <i class="fa fa-star text-secondary"></i>
+                                                        <i class="fa fa-star text-secondary"></i>
+                                                        <i class="fa fa-star text-secondary"></i>
+                                                        <i class="fa fa-star"></i>
+                                                    </div>
+                                                </div>
+                                                <p>This is one of my favorite teas of all time! It is delicious and sweet without any sugar (thank you cinnamon), it is smooth and I love it both cold, and hot. You really made a winner with this tea. I highly recommend it. </p>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex">
+                                            <img src="{% static 'img/avatar2.jpeg' %}" class="img-fluid rounded-circle p-3" style="width: 100px; height: 100px;" alt="">
+                                            <div class="">
+                                                <p class="mb-2" style="font-size: 14px;">April 29, 2024</p>
+                                                <div class="d-flex justify-content-between">
+                                                    <h5>Deirdre D.</h5>
+                                                    <div class="d-flex mb-3">
+                                                        <i class="fa fa-star text-secondary"></i>
+                                                        <i class="fa fa-star text-secondary"></i>
+                                                        <i class="fa fa-star text-secondary"></i>
+                                                        <i class="fa fa-star text-secondary"></i>
+                                                        <i class="fa fa-star"></i>
+                                                    </div>
+                                                </div>
+                                                <p class="text-dark">This is our favorite evening tea because it's dessert in a cup! It's loaded with tiny apple bits that are the highlight of the tea. They bring a fresh sweet taste (with no need to add honey), and the cinnamon and clove give an overall warmth. I think the orange peel might even soften those two spice a little bit--there is no bitterness at all, just nice balanced sweetness. The red rooibos tea itself has no caffeine so it's a beautiful treat after dinner.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <form action="#">
+                                <h4 class="mb-5 fw-bold">Leave Your Comment</h4>
+                                <div class="row g-4">
+                                    <div class="col-lg-6">
+                                        <div class="border-bottom rounded">
+                                            <input type="text" class="form-control border-0 me-4" placeholder="Yur Name *">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="border-bottom rounded">
+                                            <input type="email" class="form-control border-0" placeholder="Your Email *">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="border-bottom rounded my-4">
+                                            <textarea name="" id="" class="form-control border-0" cols="30" rows="8" placeholder="Your Review *" spellcheck="false"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="d-flex justify-content-between py-3 mb-5">
+                                            <div class="d-flex align-items-center">
+                                                <p class="mb-0 me-3">Please rate:</p>
+                                                <div class="d-flex align-items-center" style="font-size: 12px;">
+                                                    <i class="fa fa-star text-muted"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="btn border border-secondary text-primary rounded-pill px-4 py-3"> Post Comment</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-xl-3">
+                        <div class="row g-4 tea">
+                            <div class="col-lg-12">
+                                {% include 'partials/search-input.html' with extra_classes="mb-4" %}
+                                <div class="mb-4">
+                                    {% include 'partials/categories.html' %}
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <h4 class="mb-4">Holiday Products</h4>
+                                {% include 'partials/holiday-products.html' %}
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="position-relative">
+                                    <img src="{% static 'img/tea_banner.jpg' %}" class="img-fluid w-100 rounded" alt="">
+                                    <div class="position-absolute" style="top: 50%; right: 10px; transform: translateY(-50%);"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="fw-bold mb-0">Related Products</h1>
+                <div class="related-product">
+                    {% include 'partials/related-products.html' %}
+                </div>
+            </div>
+        </div>
+        <!-- Single Product End -->
+{% endblock %}

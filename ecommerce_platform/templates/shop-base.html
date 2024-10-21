@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>{{ category.name }}</title>
+{% endblock %}
+
+{% block content %}
+        {% include 'partials/single-page-header.html' with page_title="Shop" %}
+
+        <!-- Tea Shop Start-->
+        <div class="container-fluid tea py-5">
+            <div class="container py-5">
+                <h1 class="mb-4">Our Tea Collection</h1>
+                <div class="row g-4">
+                    <div class="col-lg-12">
+                        <div class="row g-4">
+                            <div class="col-xl-3">
+                                {% include 'partials/search-input.html' with extra_classes="" %}
+                            </div>
+                            <div class="col-6"></div>
+                            <div class="col-xl-3">
+                                <div class="bg-light ps-3 py-3 rounded d-flex justify-content-between mb-4">
+                                    <label for="tea">Default Sorting:</label>
+                                    <select id="tea" name="tealist" class="border-0 form-select-sm bg-light me-3" form="teaform">
+                                        <option value="rating">Rating</option>
+                                        <option value="popularity">Popularity</option>
+                                        <option value="date">Date Added</option>
+                                        <option value="empty">Do not sort</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-4">
+                            <div class="col-lg-3">
+                                <div class="row g-4">
+                                    <div class="col-lg-12">
+                                        <div class="mb-3">
+                                            {% include 'partials/categories.html' %}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="mb-3">
+                                            <h4 class="mb-2">Price</h4>
+                                            <label for="rangeInput" class="visually-hidden">Price Range</label>
+                                            <input type="range" class="form-range w-100" id="rangeInput" name="rangeInput" min="0" max="500" value="0" oninput="amount.value=rangeInput.value">
+                                            <output id="amount" name="amount" min-value="0" max-value="500" for="rangeInput">0</output>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="mb-3">
+                                            <h4>Additional</h4>
+                                            <div class="mb-2">
+                                                <input type="radio" class="me-2" id="Categories-1" name="Categories-1" value="Caffeine-free">
+                                                <label for="Categories-1"> Caffeine-free</label>
+                                            </div>
+                                            <div class="mb-2">
+                                                <input type="radio" class="me-2" id="Categories-2" name="Categories-1" value="New-added">
+                                                <label for="Categories-2"> Just Added</label>
+                                            </div>
+                                            <div class="mb-2">
+                                                <input type="radio" class="me-2" id="Categories-4" name="Categories-1" value="Sales">
+                                                <label for="Categories-4"> Discount</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <h4 class="mb-3">Holiday Products</h4>
+                                        {% include 'partials/holiday-products.html' %}
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="position-relative">
+                                            <img src="{% static 'img/tea_banner.jpg' %}" class="img-fluid w-100 rounded" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="col-lg-9">
+                                <div class="row g-4 justify-content-center">
+                                    {% block div %}
+
+                                    {% endblock %}
+                        
+                                    <!-- Pagination controls -->
+                                    <div class="col-12">
+                                        <div class="pagination d-flex justify-content-center mt-5">
+                                            {% if page_object.has_previous %}
+                                                <a href="?page={{ page_object.previous_page_number }}" class="rounded">&laquo;</a>
+                                            {% endif %}
+                        
+                                            {% for num in page_object.paginator.page_range %}
+                                                {% if page_object.number == num %}
+                                                    <a href="?page={{ num }}" class="active rounded">{{ num }}</a>
+                                                {% else %}
+                                                    <a href="?page={{ num }}" class="rounded">{{ num }}</a>
+                                                {% endif %}
+                                            {% endfor %}
+                        
+                                            {% if page_object.has_next %}
+                                                <a href="?page={{ page_object.next_page_number }}" class="rounded">&raquo;</a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- Fruits Shop End-->
+{% endblock %}

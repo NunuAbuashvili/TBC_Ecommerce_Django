@@ -1,0 +1,11 @@
+<h4>Categories</h4>
+<ul class="list-unstyled tea-categorie">
+    {% for category in categories %}
+        <li>
+            <div class="d-flex justify-content-between tea-name">
+                <a href="{% url 'store:category_page' category.slug %}"><i class="fas fa-mug-hot me-2"></i>{{ category.name }}</a>
+                <span>({{ category.product_count }})</span>
+            </div>
+        </li>
+    {% endfor %}
+</ul>
