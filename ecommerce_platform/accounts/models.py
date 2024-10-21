@@ -63,6 +63,11 @@ class CustomUser(AbstractUser):
     # Marketing Preferences
     newsletter_subscription = models.BooleanField(_('newsletter subscription'), default=False)
 
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.set_password(self.password)
+        super().save(*args, **kwargs)
+
     def __str__(self) -> str:
         return self.username
 
