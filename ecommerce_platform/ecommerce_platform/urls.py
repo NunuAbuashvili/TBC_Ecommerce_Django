@@ -7,10 +7,8 @@ from debug_toolbar.toolbar import debug_toolbar_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('main.urls', namespace='main')),
-    path('category/', include('store.urls', namespace='store')),
+    path('', include('store.urls', namespace='store')),
     path('order/', include('order.urls', namespace='order')),
-    path('contact', include('contact.urls', namespace='contact')),
 ] + debug_toolbar_urls()
 
 if settings.DEBUG:

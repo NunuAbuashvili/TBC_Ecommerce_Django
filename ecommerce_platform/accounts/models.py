@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from .choices import GenderChoices
 
 
 class CustomUser(AbstractUser):
@@ -31,17 +32,9 @@ class CustomUser(AbstractUser):
     # Account details
     date_of_birth = models.DateField(_('date of birth'), blank=True, null=True)
     gender = models.CharField(
-        _('gender'),
         max_length=2,
-        blank=True,
-        null=True,
-        choices=[
-            ('M', 'Male'),
-            ('F', 'Female'),
-            ('O', 'Other'),
-            ('P', 'Prefer not to say')
-        ],
-        help_text=_('Optional field for gender identity')
+        choices=GenderChoices,
+        default=GenderChoices.PREFER_NOT_TO_SAY,
     )
     is_verified = models.BooleanField(_('email verified'), default=False)
     account_type = models.CharField(

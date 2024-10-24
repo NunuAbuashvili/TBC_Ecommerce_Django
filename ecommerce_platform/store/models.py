@@ -1,6 +1,7 @@
 import uuid
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from versatileimagefield.fields import VersatileImageField
 
 
 class Tea(models.Model):
@@ -33,7 +34,7 @@ class Tea(models.Model):
     ingredients = models.TextField(verbose_name='ingredients', blank=True, null=True)
     price = models.DecimalField(max_digits=7, decimal_places=2)
     stock_quantity = models.PositiveIntegerField(default=0)
-    image = models.ImageField(upload_to='products/', null=True, blank=True)
+    image = VersatileImageField('Image', upload_to='products/', null=True, blank=True)
     rating = models.PositiveIntegerField(
         validators=[
             MinValueValidator(1),
@@ -42,6 +43,7 @@ class Tea(models.Model):
         default=1
     )
     category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='products')
+    tags = models.ManyToManyField('Tag', blank=True, related_name='teas')
     contains_caffeine = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -79,3 +81,20 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'Category'
         verbose_name_plural = 'Categories'
+
+
+class Tag(models.Model):
+    """
+    Represents a product tag in the e-commerce platform.
+
+    Attributes:
+        name (str): The name of the tag.
+    """
+    name = models.CharField(max_length=255, unique=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Product Tag'
+        verbose_name_plural = 'Product Tags'

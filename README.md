@@ -12,9 +12,13 @@ It is currently in the initial stage and will be expanded over time with more fe
 - **Product Management**
     - Dynamic product catalog with detailed product pages.
     - Category-based product organization.
+    - Case-insensitive search.
     - Advanced product filtering:
-        - Category-based filtering (e.g., 'Christmas Tea')
+        - Category-based filtering (e.g., 'Christmas Tea').
         - Rating-based filtering (top-rated products).
+        - Product sorting (by rating, price, upload date, and name).
+        - Filtering by tags (Holiday Specials, Caffeine-free, Contains Cinnamon, Gift Box, and Only Few Items Left).
+        - Filtering by price range.
     - Product image display.
 - **User Interface**
     - Responsive design.
@@ -23,7 +27,10 @@ It is currently in the initial stage and will be expanded over time with more fe
     - Category-based browsing.
     - Dynamic content loading from database.
 - **Shopping Experience**
-    - Shopping cart system (in development)
+    - Shopping cart system (in development):
+        - Registered users are able to add products to their cart.
+        - Total prices are calculated automatically.
+        - The length of the cart is updated dynamically. 
     - Checkout process (in development)
     - Product ratings display.
 - **User Features**
@@ -37,9 +44,8 @@ It is currently in the initial stage and will be expanded over time with more fe
 - `accounts`: Handles custom user implementation.
 - `order`: Manages shopping cart and checkout process.
     - Models: Cart, CartItem
-- `contact`: Handles customer inquiries.
 - `store`: Manages products and categories.
-    - Models: Tea, Category
+    - Models: Tea, Category, Tag
 - `main`: Handles main page functionality.
 
 ### Templates
@@ -51,43 +57,41 @@ templates/
 │   ├── categories.html
 │   ├── holiday-products.html
 │   ├── related-products.html
-│   ├── search-input.html
+│   ├── search.html
 │   └── single-page-header.html
 ├── store/
 │   ├── category-detail.html
+│   ├── contact.html
+│   ├── home.html
 │   ├── shop.html
 │   └── shop-detail.html
 ├── order/
-│   ├── cart.html
-│   └── checkout.html
-├── main/
-│   └── home.html
-└── contact/
-    └── contact.html
+    ├── cart.html
+    └── checkout.html
+
 
 ### API Endpoints
 
-### Main
-- `GET /`: Home page
-
 ### Store
+- `GET /`: Home page
 - `GET /category/`: Shop page with all products.
 - `GET /category/<slug:slug>/`: Category detail page.
-- `GET /category/product/<slug:slug>/`: Product detail page.
+- `GET /product/<slug:slug>/`: Product detail page.
+- `GET /search/`: Search product.
+- `GET /contact/`: PContact form page.
 
 ### Order
 - `GET /order/cart/`: Shopping cart page.
+- `GET /cart/add/<int:product_id>/`: Add product to the cart.
+- `GET /cart/update/`: Update the quantity of the product in the cart.
+- `GET /cart/remove/`: Remove a product from the cart.
 - `GET /order/checkout/`: Checkout page.
-
-### Contact
-- `GET /contact`: Contact form page.
 
 ## Future Plans
 - User authentication.
 - Shopping cart functionality.
 - Checkout functionality.
 - Contact form update.
-- Product search implementation.
 - Rating system implementation.
 
 
@@ -112,8 +116,6 @@ templates/
 
 ecommerce_platform/
 ├── accounts/       # Custom user authentication
-├── contact/       # Contact form handling
-└── main/          # Main page functionality
 ├── media/          # User-uploaded content
 ├── order/         # Cart and checkout functionality
 ├── static/         # Static files (CSS, JS, images)
@@ -137,4 +139,4 @@ please note that major changes may be implemented as part of the learning journe
 This README is in its initial state and will be updated regularly as the project evolves. 
 Check back for the latest information on features and usage.
 
-*Last updated: [21.10.2024]*
+*Last updated: [24.10.2024]*

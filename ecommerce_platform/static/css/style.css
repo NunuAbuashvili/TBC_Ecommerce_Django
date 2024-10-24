@@ -1,3 +1,15 @@
+:root {
+    --bs-primary: #72BF78;
+    --bs-secondary: #FFDC7F;
+}
+
+.text-primary { color: var(--bs-primary) !important; }
+.text-secondary { color: var(--bs-secondary) !important; }
+
+.bg-primary { background-color: var(--bs-primary) !important; }
+.bg-secondary { background-color: var(--bs-secondary) !important; }
+
+.bg-dark { background-color: #6A9C89 !important}
 
 /*** Spinner Start ***/
 #spinner {

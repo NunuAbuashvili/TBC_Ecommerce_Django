@@ -2,7 +2,7 @@ from django.db.models import Count
 from django.contrib import admin
 from django.db.models import QuerySet
 from django.http import HttpRequest
-from .models import Tea, Category
+from .models import Tea, Category, Tag
 
 
 @admin.register(Tea)
@@ -60,3 +60,10 @@ class CategoryAdmin(admin.ModelAdmin):
             int: Number of products in this category.
         """
         return instance.product_count
+
+
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    """ Admin configuration for Tag model. """
+    list_display = ('name',)
+    search_fields = ('name',)
