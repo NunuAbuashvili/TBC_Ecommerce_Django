@@ -4,7 +4,7 @@
         <li class="breadcrumb-item"><a href="{% url 'store:home' %}">Home</a></li>
         <li class="breadcrumb-item active text-white"><a href="{% url 'store:shop' %}">Shop</a></li>
         {% if category %}
-            <li class="breadcrumb-item active text-white"><a href="{% url 'store:category_page' category.slug %}">{{ category.name }}</a></li>
-        {% endif %}
+            <li class="breadcrumb-item active text-white"><a href="{% url 'store:category_page' category.slug %}">{{ category }}</a></li>
+        {% endif %}    
     </ol>
 </div>

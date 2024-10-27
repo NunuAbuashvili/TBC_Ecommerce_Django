@@ -49,6 +49,9 @@ class Tea(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
 
+    class Meta:
+        ordering = ('name',)
+
     def __str__(self):
         """ Return the string representation of the tea. """
         return self.name

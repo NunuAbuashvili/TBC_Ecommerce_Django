@@ -2,74 +2,87 @@
 {% load static %}
 
 {% block title %}
-    <title>Cart</title>
+    <title>Shopping Cart | {{ site_name }}</title>
 {% endblock %}
 
 {% block content %}
-        {% include 'partials/single-page-header.html' with page_title="Cart" %}
+    {% include 'partials/single-page-header.html' with page_title="Shopping Cart" %}
 
-        <!-- Cart Page Start -->
-        <div class="container-fluid py-5">
-            <div class="container py-5">
+    <!-- Cart Page Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            {% if cart_items %}
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table" aria-label="Shopping cart items">
                         <thead>
-                          <tr>
-                            <th scope="col">Products</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Total</th>
-                            <th scope="col">Handle</th>
-                          </tr>
+                            <tr>
+                                <th scope="col" class="text-nowrap">Product Image</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Total</th>
+                                <th scope="col"><span class="visually-hidden">Actions</span></th>
+                            </tr>
                         </thead>
                         <tbody>
                             {% for item in cart_items %}
                                 <tr>
-                                    <th scope="row">
-                                        <div class="d-flex align-items-center">
-                                            <img src="{{ item.image.crop.80x80 }}" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
-                                        </div>
-                                    </th>
                                     <td>
-                                        <p class="mb-0 mt-4">{{ item.name }}</p>
+                                        <img src="{{ item.product.image.crop.80x80 }}"
+                                             class="img-fluid rounded-circle"
+                                             width="80"
+                                             height="80"
+                                             alt="{{ item.product.name }}"
+                                             loading="lazy">
                                     </td>
                                     <td>
-                                        <p class="mb-0 mt-4">${{ item.price }}</p>
+                                        <h3 class="h6 mb-0">{{ item.product.name }}</h3>
                                     </td>
                                     <td>
-                                        <form method="post" action="{% url 'order:update_cart_item' %} " class="mt-4">
+                                        <span class="price">${{ item.product.price|floatformat:2 }}</span>
+                                    </td>
+                                    <td>
+                                        <form method="post" action="{% url 'order:update_cart_item' %}"
+                                              class="quantity-form" aria-label="Update quantity form">
                                             {% csrf_token %}
-                                            <div class="input-group quantity" style="width: 100px;">
-                                                <div class="input-group-btn">
-                                                    <button type="submit" name="action" value="decrease" class="btn btn-sm btn-minus rounded-circle bg-light border" >
-                                                    <i class="fa fa-minus"></i>
-                                                    </button>
-                                                </div>
-                                                <input type="text" class="form-control form-control-sm text-center border-0" value="{{ item.quantity }}">
-                                                <input type="hidden" name="item_id" value="{{ item.id }}">
-                                                <input type="number" name="quantity" value="{{ item.quantity }}"
-                                                   class="form-control form-control-sm text-center border-0"
-                                                   min="1">
-                                                <div class="input-group-btn">
-                                                    <button type="submit" name="action" value="increase" class="btn btn-sm btn-plus rounded-circle bg-light border">
-                                                        <i class="fa fa-plus"></i>
-                                                    </button>
-                                                </div>
+                                            <div class="input-group quantity" style="width: 120px;">
+                                                <button type="button"
+                                                        name="action"
+                                                        value="decrease"
+                                                        class="btn btn-sm btn-outline-secondary"
+                                                        aria-label="Decrease quantity">
+                                                    <i class="fa fa-minus" aria-hidden="true"></i>
+                                                </button>
+                                                <input type="number"
+                                                       name="quantity"
+                                                       class="form-control text-center"
+                                                       value="{{ item.quantity }}"
+                                                       min="1"
+                                                       max="{{ item.product.stock_quantity }}"
+                                                       aria-label="Product quantity"
+                                                       data-item-id="{{ item.id }}">
+                                                <button type="button"
+                                                        name="action"
+                                                        value="increase"
+                                                        class="btn btn-sm btn-outline-secondary"
+                                                        aria-label="Increase quantity">
+                                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                                </button>
                                             </div>
+                                            <input type="hidden" name="item_id" value="{{ item.id }}">
                                         </form>
-
-
                                     </td>
                                     <td>
-                                        <p class="mb-0 mt-4">${{ item.subtotal }}</p>
+                                        <span class="subtotal">${{ item.subtotal|floatformat:2 }}</span>
                                     </td>
                                     <td>
                                         <form method="post" action="{% url 'order:remove_from_cart' %}" class="d-inline">
                                             {% csrf_token %}
                                             <input type="hidden" name="item_id" value="{{ item.id }}">
-                                            <button type="submit" class="btn btn-md rounded-circle bg-light border mt-4">
-                                                <i class="fa fa-times text-danger"></i>
+                                            <button type="submit"
+                                                    class="btn btn-outline-danger btn-sm rounded-circle"
+                                                    aria-label="Remove {{ item.product.name }} from cart">
+                                                <i class="fa fa-times" aria-hidden="true"></i>
                                             </button>
                                         </form>
                                     </td>
@@ -79,40 +92,71 @@
                     </table>
                 </div>
 
-                <div class="mt-5">
-                    <input type="text" class="border-0 border-bottom rounded me-5 py-3 mb-4" placeholder="Coupon Code">
-                    <button class="btn border-secondary rounded-pill px-4 py-3 text-primary" type="button">Apply Coupon</button>
+                <!-- Coupon Section -->
+                <div class="row mt-5">
+                    <div class="col-md-6">
+                        <form class="d-flex gap-3" id="coupon-form">
+                            <div class="flex-grow-1">
+                                <label for="coupon-code" class="visually-hidden">Coupon Code</label>
+                                <input type="text"
+                                       id="coupon-code"
+                                       name="coupon_code"
+                                       class="form-control"
+                                       placeholder="Enter coupon code">
+                            </div>
+                            <button type="submit"
+                                    class="btn btn-primary">
+                                Apply Coupon
+                            </button>
+                        </form>
+                    </div>
                 </div>
 
-                <div class="row g-4 justify-content-end">
-                    <div class="col-8"></div>
-                    <div class="col-sm-8 col-md-7 col-lg-6 col-xl-4">
-                        <div class="bg-light rounded">
-                            <div class="p-4">
-                                <h1 class="display-6 mb-4">Cart <span class="fw-normal">Total</span></h1>
-                                <div class="d-flex justify-content-between mb-4">
-                                    <h5 class="mb-0 me-4">Subtotal:</h5>
-                                    <p class="mb-0">{{ subtotal }}</p>
+                <!-- Cart Summary -->
+                <div class="row g-4 justify-content-end mt-4">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h2 class="h4 mb-4">Order Summary</h2>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <span>Subtotal</span>
+                                    <span>${{ subtotal|floatformat:2 }}</span>
                                 </div>
-                                <div class="d-flex justify-content-between">
-                                    <h5 class="mb-0 me-4">Shipping</h5>
-                                    <div class="">
-                                        <p class="mb-0">{{ shipping }}</p>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <span>Shipping</span>
+                                    <span>${{ shipping|floatformat:2 }}</span>
+                                </div>
+                                {% if discount %}
+                                <div class="d-flex justify-content-between mb-3 text-success">
+                                    <span>Discount</span>
+                                    <span>-${{ discount|floatformat:2 }}</span>
+                                </div>
+                                {% endif %}
+                                <div class="border-top pt-3 mt-3">
+                                    <div class="d-flex justify-content-between">
+                                        <strong>Total</strong>
+                                        <strong>${{ total|floatformat:2 }}</strong>
                                     </div>
                                 </div>
-                                <p class="mb-0 text-end">Shipping in Georgia</p>
+                                <a href="{% url 'order:checkout' %}"
+                                   class="btn btn-primary w-100 mt-4">
+                                    Proceed to Checkout
+                                </a>
                             </div>
-                            <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
-                                <h5 class="mb-0 ps-4 me-4">Total</h5>
-                                <p class="mb-0 pe-4">{{ total }}</p>
-                            </div>
-                            <a href="{% url 'order:checkout' %}" class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4">
-                                Proceed Checkout
-                            </a>
                         </div>
                     </div>
                 </div>
-            </div>
+            {% else %}
+                <div class="text-center py-5">
+                    <i class="fa fa-shopping-cart fa-3x text-muted mb-3"></i>
+                    <h2 class="h4 mb-3">Your cart is empty</h2>
+                    <p class="text-muted">Browse our products and add items to your cart.</p>
+                    <a href="{% url 'store:product_list' %}" class="btn btn-primary mt-3">
+                        Continue Shopping
+                    </a>
+                </div>
+            {% endif %}
         </div>
-        <!-- Cart Page End -->
+    </div>
+    <!-- Cart Page End -->
 {% endblock %}

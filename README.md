@@ -36,6 +36,7 @@ It is currently in the initial stage and will be expanded over time with more fe
 - **User Features**
     - Contact form for customer inquiries (in development)
     - User authentication system (in development)
+- **Class-based Views**
 
 
 ## Project Structure
@@ -52,7 +53,6 @@ It is currently in the initial stage and will be expanded over time with more fe
 templates/
 ├── 404.html
 ├── base.html
-├── shop-base.html
 ├── partials/
 │   ├── categories.html
 │   ├── holiday-products.html
@@ -139,4 +139,4 @@ please note that major changes may be implemented as part of the learning journe
 This README is in its initial state and will be updated regularly as the project evolves. 
 Check back for the latest information on features and usage.
 
-*Last updated: [24.10.2024]*
+*Last updated: [27.10.2024]*

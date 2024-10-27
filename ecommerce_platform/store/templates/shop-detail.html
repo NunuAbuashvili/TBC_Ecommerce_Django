@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-    <title>{{ product.name }}</title>
+    <title>{{ tea.name }}</title>
 {% endblock %}
 
 {% block content %}
@@ -16,26 +16,26 @@
                         <div class="row g-4">
                             <div class="col-lg-6">
                                 <div class="border rounded">
-                                    <a href="{% url 'store:product_page' product.slug %}">
-                                        <img src="{{ product.image.url }}" class="img-fluid rounded" alt="Image">
+                                    <a href="{% url 'store:product_page' tea.slug %}">
+                                        <img src="{{ tea.image.crop.402x402 }}" class="img-fluid rounded" alt="Image">
                                     </a>
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <h4 class="fw-bold mb-3">{{ product.name }}</h4>
-                                <p class="mb-3">Category: {{ category.name }}</p>
-                                <h5 class="fw-bold mb-3">${{ product.price }}</h5>
+                                <h4 class="fw-bold mb-3">{{ tea.name }}</h4>
+                                <p class="mb-3">Category: {{ tea.category.name }}</p>
+                                <h5 class="fw-bold mb-3">${{ tea.price }}</h5>
                                 <div class="d-flex mb-4">
                                     {% for i in '12345' %}
-                                        {% if forloop.counter <= product.rating %}
+                                        {% if forloop.counter <= tea.rating %}
                                             <i class="fa fa-star text-secondary"></i>
                                         {% else %}
                                             <i class="fa fa-star"></i>
                                         {% endif %}
                                     {% endfor %}
                                 </div>
-                                <p class="mb-4">{{ product.description }}</p>
-                                <form action="{% url 'order:add_to_cart' product.id %}" method="POST">
+                                <p class="mb-4">{{ tea.description }}</p>
+                                <form action="{% url 'order:add_to_cart' tea.id %}" method="post">
                                     {% csrf_token %}
                                     {% if messages %}
                                         <ul class="messages">
@@ -52,7 +52,7 @@
                                                 <i class="fa fa-minus"></i>
                                             </button>
                                         </div>
-                                        <input type="text" name="quantity" class="form-control form-control-sm text-center border-0" value="1" min="1">
+                                        <input type="number" name="quantity_to_add" class="form-control form-control-sm text-center border-0" value="1" min="1">
                                         <div class="input-group-btn">
                                             <button type="button" class="btn btn-sm btn-plus rounded-circle bg-light border">
                                                 <i class="fa fa-plus"></i>
@@ -78,8 +78,8 @@
                                 </nav>
                                 <div class="tab-content mb-5">
                                     <div class="tab-pane active" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
-                                        <p><b>Ingredients: </b>{{ product.ingredients }}</p>
-                                        {% if product.contains_caffeine %}
+                                        <p><b>Ingredients: </b>{{ tea.ingredients }}</p>
+                                        {% if tea.contains_caffeine %}
                                             <p><i>Contains caffeine.</i></p>
                                         {% else %}
                                             <p><i>Caffeine free.</i></p>
