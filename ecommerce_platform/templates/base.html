@@ -50,11 +50,13 @@
                         <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">abuashvilinunu@gmail.com</a></small>
                     </div>
                     <div class="top-link pe-2">
-                        <a href="#" class="text-white"><small class="text-white mx-2">Privacy Policy</small>/</a>
-                        <a href="#" class="text-white"><small class="text-white mx-2">Terms of Use</small>/</a>
-                        <a href="#" class="text-white"><small class="text-white mx-2">Sales and Refunds</small>/</a>
-                        <a href="#" class="text-white"><small class="text-white mx-2">Sign In</small>/</a>
-                        <a href="#" class="text-white"><small class="text-white ms-2">Sign Out</small></a>
+                        {% if user.is_authenticated %}
+                            <a href="#" class="text-white"><small class="text-white mx-2">Account</small>/</a>
+                            <a href="{% url 'accounts:logout' %}" class="text-white"><small class="text-white ms-2">Sign Out</small></a>
+                        {% else %}
+                            <a href="{% url 'accounts:register' %}" class="text-white"><small class="text-white mx-2">Sign Up</small>/</a>
+                            <a href="{% url 'accounts:login' %}" class="text-white"><small class="text-white mx-2">Sign In</small></a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

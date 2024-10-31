@@ -102,15 +102,6 @@
                                                 <h4 class="text-truncate">{{ tea.name }}</h4>
                                                 <form action="{% url 'order:add_to_cart' tea.id %}" method="post">
                                                     {% csrf_token %}
-                                                    {% if messages %}
-                                                        <ul class="messages">
-                                                            {% for message in messages %}
-                                                                <li class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
-                                                                    {{ message }}
-                                                                </li>
-                                                            {% endfor %}
-                                                        </ul>
-                                                    {% endif %}
                                                     <div class="d-flex justify-content-between flex-lg-wrap mt-auto">
                                                         <p class="text-dark fs-5 fw-bold mb-0">${{ tea.price }}</p>
                                                         <button type="submit" class="btn border border-secondary rounded-pill px-3 text-primary">

@@ -52,6 +52,6 @@ def cart_size(request: HttpRequest) -> Dict[str, int]:
 
     if request.user.is_authenticated:
         cart = request.user.cart
-        cart_length = cart.total_items
+        cart_length = sum(cart_item.quantity for cart_item in cart.items.all())
 
     return {'cart_length': cart_length}

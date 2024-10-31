@@ -34,8 +34,11 @@ It is currently in the initial stage and will be expanded over time with more fe
     - Checkout process (in development)
     - Product ratings display.
 - **User Features**
-    - Contact form for customer inquiries (in development)
-    - User authentication system (in development)
+    - Contact form for customer inquiries (in development).
+    - User registration form.
+    - User authentication system.
+    - User logout.
+    - User profile (in development).
 - **Class-based Views**
 
 
@@ -66,30 +69,38 @@ templates/
 │   ├── shop.html
 │   └── shop-detail.html
 ├── order/
-    ├── cart.html
-    └── checkout.html
+│    ├── cart.html
+│    └── checkout.html
+├── accounts/
+│   ├── login.html
+│   ├── logout.html
+    └── register.html
 
 
 ### API Endpoints
 
 ### Store
 - `GET /`: Home page
-- `GET /category/`: Shop page with all products.
-- `GET /category/<slug:slug>/`: Category detail page.
-- `GET /product/<slug:slug>/`: Product detail page.
-- `GET /search/`: Search product.
-- `GET /contact/`: PContact form page.
+- `GET /category`: Shop page with all products.
+- `GET /category/<slug:slug>`: Category detail page.
+- `GET /product/<slug:slug>`: Product detail page.
+- `GET /search`: Search product.
+- `GET /contact`: PContact form page.
 
 ### Order
-- `GET /order/cart/`: Shopping cart page.
-- `GET /cart/add/<int:product_id>/`: Add product to the cart.
-- `GET /cart/update/`: Update the quantity of the product in the cart.
-- `GET /cart/remove/`: Remove a product from the cart.
-- `GET /order/checkout/`: Checkout page.
+- `GET /order/cart`: Shopping cart page.
+- `POST /cart/add/<int:product_id>`: Add product to the cart.
+- `POST /cart/update`: Update the quantity of the product in the cart.
+- `POST /cart/remove`: Remove a product from the cart.
+- `GET /order/checkout`: Checkout page.
+
+### Accounts
+- `POST /accounts/register`: Register new user.
+- `GET /accounts/login`: User login.
+- `GET /accounts/logout`: User logout.
+
 
 ## Future Plans
-- User authentication.
-- Shopping cart functionality.
 - Checkout functionality.
 - Contact form update.
 - Rating system implementation.
@@ -139,4 +150,4 @@ please note that major changes may be implemented as part of the learning journe
 This README is in its initial state and will be updated regularly as the project evolves. 
 Check back for the latest information on features and usage.
 
-*Last updated: [27.10.2024]*
+*Last updated: [31.10.2024]*

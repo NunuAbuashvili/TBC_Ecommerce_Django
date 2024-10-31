@@ -1,4 +1,6 @@
 from django.contrib import admin
+
+from .forms import CustomUserCreationForm
 from .models import CustomUser
 
 
@@ -7,13 +9,13 @@ class CustomUserAdmin(admin.ModelAdmin):
     """
     Admin configuration for CustomUser model.
     """
+    add_form = CustomUserCreationForm
     list_display = (
-        'username', 'date_of_birth', 'country', 'is_verified', 'is_active'
+        'username', 'email', 'date_of_birth', 'last_active_datetime'
     )
     list_filter = ('account_type', 'is_verified', 'is_active')
     search_fields = ('username', 'country')
     search_help_text = 'Search by username or country'
-    list_editable = ('is_verified', 'is_active')
     ordering = ('date_of_birth',)
 
     fieldsets = (

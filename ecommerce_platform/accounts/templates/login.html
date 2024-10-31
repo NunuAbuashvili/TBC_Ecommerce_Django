@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    {% include 'partials/single-page-header.html' %}
+
+    <div class="d-flex align-content-center justify-content-center mt-5">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-warning">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <div class="container-fluid py-5 d-flex align-items-center justify-content-center">
+        <div class="container py-5">
+            <h1 class="mb-4 text-center">Sign In</h1>
+            <div class="row g-5">
+                <div class="col-md-12 col-lg-6 col-xl-7 mx-auto">
+                    <form method="post">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            {{ form|crispy }}
+                        </fieldset>
+                        <div class="form-group mt-4 mb-4">
+                            <button type="submit" class="btn btn-primary">Sign In</button>
+                        </div>
+                    </form>
+                    <div class="border-top pt-3 mt-4">
+                        <small class="text-muted">
+                            Not registered yet? <a class="ml-2" href="{% url 'accounts:register' %}">Sign Up</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
