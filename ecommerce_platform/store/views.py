@@ -29,7 +29,7 @@ class TeaDetailView(DetailView):
     """ Display details of a specific tea product. """
     queryset = Tea.objects.select_related('category')
     template_name = 'shop-detail.html'
-    context_object_name = 'tea'
+    context_object_name = 'product'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -52,7 +52,7 @@ class TeaListView(ListView):
     """
     model = Tea
     template_name = 'shop.html'
-    context_object_name = 'tea_list'
+    context_object_name = 'product_list'
     ordering = 'name'
     paginate_by = 6
 
