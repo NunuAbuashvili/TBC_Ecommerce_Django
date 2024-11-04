@@ -9,7 +9,7 @@ SECRET_KEY = "django-insecure--og#i0wo+k_&7xeh^b%5z5)43zplsy+%vm&cko3ygo=xnwm!x%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -86,6 +86,15 @@ DATABASES = {
 }
 
 
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "development-cache",
+        "STATS": True,
+    }
+}
+
+
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
@@ -140,3 +149,17 @@ INTERNAL_IPS = [
 ]
 
 LOGIN_REDIRECT_URL = 'store:home'
+
+
+# Email Settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'nunupython@gmail.com'
+EMAIL_HOST_PASSWORD = 'xmha aivm pent vvbd'
+EMAIL_USE_TLS = True
+
+# Admins who will receive the emails
+ADMINS = [
+    ('Nunu', 'abuashvilinunu@gmail.com'),
+]

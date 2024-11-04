@@ -1,6 +1,8 @@
 from django.core.paginator import Paginator
+from django.core.mail import mail_admins
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.db.models import Q, Count
 from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
@@ -123,7 +125,27 @@ class TeaListView(ListView):
         return context
 
 
-class ContactFormView(TemplateView):
-    """ Render the contact page. """
-    # რადგან ჯერჯერობით ფუნქციონალი არ მაქვს შემუშავებული, ამიტომ TemplateView დავტოვე, მოგვიანებით გადავაკეთებ.
-    template_name = 'contact.html'
+def send_email(request):
+    if request.method == 'POST':
+        name = request.POST.get('name', '').title()
+        email = request.POST.get('email', '')
+        message = request.POST.get('message', '')
+
+        subject = f'New Contact Form Submission from {name}'
+        message_body = f"""
+        Name: {name}
+        Email: {email}
+        Message: {message}
+        """
+
+        try:
+            mail_admins(
+                subject=subject,
+                message=message_body,
+            )
+            messages.success(request, 'Your message has been sent.')
+            return render(request, 'contact.html', context={'name': name})
+        except Exception as error:
+            messages.error(request, f'An error occured while sending your emssage: {error}.')
+
+    return render(request, 'contact.html')

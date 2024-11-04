@@ -150,4 +150,4 @@ please note that major changes may be implemented as part of the learning journe
 This README is in its initial state and will be updated regularly as the project evolves. 
 Check back for the latest information on features and usage.
 
-*Last updated: [31.10.2024]*
+*Last updated: [04.11.2024]*
