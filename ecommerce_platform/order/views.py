@@ -103,19 +103,22 @@ class AddToCartView(LoginRequiredMixin, View):
 
 class UpdateCartView(LoginRequiredMixin, UpdateView):
     """ Update the quantity of an item in the cart. """
-    # კალათის გვერდზე არის დიზაინი პროდუქტის რაოდენობის შესაცვლელად,
-    # მაგრამ კოდი გასასწორებელია და ჯერჯერობით სწორად არ მუშაობს.
     def post(self, request, *args, **kwargs):
         item_id = request.POST.get('item_id')
         action = request.POST.get('action')
         cart_item = get_object_or_404(CartItem, id=item_id)
 
+        current_quantity = cart_item.quantity
+        stock_quantity = cart_item.product.stock_quantity
+
         if action == 'increase':
-            if cart_item.quantity < cart_item.product.stock_quantity:
+            if current_quantity < stock_quantity and current_quantity + 1 <= stock_quantity:
                 cart_item.quantity += 1
                 cart_item.save()
         elif action == 'decrease':
-            if cart_item.quantity > 1:
+            if current_quantity == 1:
+                cart_item.delete()
+            else:
                 cart_item.quantity -= 1
                 cart_item.save()
 

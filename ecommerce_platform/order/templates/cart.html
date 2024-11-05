@@ -45,8 +45,8 @@
                                         <form method="post" action="{% url 'order:update_cart_item' %}"
                                               class="quantity-form" aria-label="Update quantity form">
                                             {% csrf_token %}
-                                            <div class="input-group quantity" style="width: 120px;">
-                                                <button type="button"
+                                            <div class="input-group" style="width: 120px;">
+                                                <button type="submit"
                                                         name="action"
                                                         value="decrease"
                                                         class="btn btn-sm btn-outline-secondary"
@@ -61,7 +61,7 @@
                                                        max="{{ item.product.stock_quantity }}"
                                                        aria-label="Product quantity"
                                                        data-item-id="{{ item.id }}">
-                                                <button type="button"
+                                                <button type="submit"
                                                         name="action"
                                                         value="increase"
                                                         class="btn btn-sm btn-outline-secondary"
