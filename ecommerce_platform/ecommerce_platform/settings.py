@@ -23,6 +23,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "debug_toolbar",
     "versatileimagefield",
+    "crispy_forms",
+    "crispy_bootstrap4",
     "django_countries",
     "accounts.apps.AccountsConfig",
     "store.apps.StoreConfig",
