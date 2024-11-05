@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django import forms
 from .models import CustomUser
+from .choices import GenderChoices
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -10,6 +11,19 @@ class CustomUserCreationForm(UserCreationForm):
     """
     email = forms.EmailField(required=True)
     date_of_birth = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+
+    def __init__(self, *args, **kwargs):
+        super(CustomUserCreationForm, self).__init__(*args, **kwargs)
+
+        # Add Bootstrap classes to all fields
+        for field in self.fields:
+            self.fields[field].widget.attrs.update({'class': 'form-control'})
+
+        self.fields['password1'].required = True
+        self.fields['password2'].required = True
+
+        for field in ['password1', 'password2']:
+            self.fields[field].help_text = None
 
     class Meta(UserCreationForm.Meta):
         model = CustomUser

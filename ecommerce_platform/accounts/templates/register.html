@@ -1,5 +1,4 @@
-{% extends 'base.html' %}
-{% load crispy_forms_tags %}
+ {% extends 'base.html' %}
 
 {% block content %}
     {% include 'partials/single-page-header.html' %}
@@ -12,12 +11,54 @@
                     <form method="post">
                         {% csrf_token %}
                         <fieldset class="form-group">
-                            {{ form|crispy }}
+                            {% for field in form %}
+                                <div class="mb-3">
+                                    {{ field.label_tag }}
+                                    {% if field.field.required %}
+                                        <span class="text-danger">*</span>
+                                    {% endif %}
+                                    {{ field }}
+                                    {% if field.errors %}
+                                        {% for error in field.errors %}
+                                            {% if "match" in error %}
+                                                <div class="text-danger small mt-1">
+                                                    <strong>{{ error }}</strong>
+                                                </div>
+                                            {% elif not "password" in field.name %}
+                                                <div class="text-danger small mt-1">
+                                                    <strong>{{ error }}</strong>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
                         </fieldset>
-                        <div class="form-group mt-4 mb-4">
+
+                        <div class="form-group mt-3">
+                            <small id="hint_id_password1" class="form-text text-muted">
+                                <ul>
+                                    <li {% if 'Similarity Error' in password_error %} style="color:#dc3545;" {% else %} style="color:#88C273;" {% endif %}>
+                                        <strong>Your password can’t be too similar to your other personal information.</strong>
+                                    </li>
+                                    <li {% if 'Short Password Error' in password_error %} style="color:#dc3545;" {% else %} style="color:#88C273;" {% endif %}>
+                                        <strong>Your password must contain at least 8 characters.</strong>
+                                    </li>
+                                    <li {% if 'Common Password Error' in password_error %} style="color:#dc3545;" {% else %} style="color:#88C273;" {% endif %}>
+                                        <strong>Your password can’t be a commonly used password.</strong>
+                                    </li>
+                                    <li {% if 'Numeric Password Error' in password_error %} style="color:#dc3545;" {% else %} style="color:#88C273;" {% endif %}>
+                                        <strong>Your password can’t be entirely numeric.</strong>
+                                    </li>
+                                </ul>
+                            </small>
+                        </div>
+
+                        <div class="form-group mt-4 mb-4 text-center">
                             <button type="submit" class="btn btn-primary">Sign Up</button>
                         </div>
                     </form>
+
                     <div class="border-top pt-3 mt-4">
                         <small class="text-muted">
                             Already Have an Account? <a class="ml-2" href="{% url 'accounts:login' %}">Sign In</a>
