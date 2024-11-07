@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-07 09:59+0400\n"
+"POT-Creation-Date: 2024-11-07 19:22+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -537,8 +537,8 @@ msgstr "კოლექციები"
 msgid "Add to cart"
 msgstr "კალათაში დამატება"
 
-#: .\store\templates\contact.html:5 .\templates\base.html:104
-#: .\templates\base.html:202
+#: .\store\templates\contact.html:5 .\store\templates\contact.html:9
+#: .\templates\base.html:104 .\templates\base.html:202
 msgid "Contact"
 msgstr "კონტაქტი"
 
@@ -577,6 +577,10 @@ msgstr "თქვენი ელექტრონული ფოსტა"
 #: .\store\templates\contact.html:51 .\store\templates\contact.html:52
 msgid "Your Message"
 msgstr "თქვენი შეტყობინება"
+
+#: .\store\templates\contact.html:53
+msgid "Submit"
+msgstr "გაგზავნა"
 
 #: .\store\templates\contact.html:61 .\templates\base.html:50
 msgid "Tbilisi, Georgia"
@@ -854,8 +858,8 @@ msgstr "სადღესასწაულო პროდუქცია"
 msgid "Related Products"
 msgstr "მსგავსი პროდუქტები"
 
-#: .\store\templates\shop.html:6 .\templates\base.html:95
-#: .\templates\partials\single-page-header.html:7
+#: .\store\templates\shop.html:6 .\store\templates\shop.html:11
+#: .\templates\base.html:95 .\templates\partials\single-page-header.html:7
 msgid "Shop"
 msgstr "მაღაზია"
 
@@ -887,12 +891,12 @@ msgstr "კოლექციები"
 msgid "Filter"
 msgstr "გაფილტვრა"
 
-#: .\store\views.py:136
+#: .\store\views.py:141
 #, python-format
 msgid "New Contact Form Submission from %(name)s"
 msgstr "ახალი საკონტაქტო ფორმა %(name)s(ი)სგან"
 
-#: .\store\views.py:150
+#: .\store\views.py:155
 msgid "Your message has been sent."
 msgstr "თქვენი შეტყობინება წარმატებით გაიგზავნა."
 
@@ -1036,5 +1040,5 @@ msgstr "მოძებნეთ ჩაი..."
 msgid "Search Now"
 msgstr "ძიება"
 
-msgid "%(model_name)s with this %(field_label)s already exists."
-msgstr "მომხმარებელი მოცემული ელექტრონული ფოსტის მისამართით უკვე არსებობს."
+#~ msgid "%(model_name)s with this %(field_label)s already exists."
+#~ msgstr "მომხმარებელი მოცემული ელექტრონული ფოსტის მისამართით უკვე არსებობს."
