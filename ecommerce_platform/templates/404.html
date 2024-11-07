@@ -1,8 +1,8 @@
-
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block title %}
-    <title>Page Not Found</title>
+    <title>{% trans "Page Not Found" %}</title>
 {% endblock %}
         
 {% block content %}
@@ -14,9 +14,9 @@
                 <div class="col-lg-6">
                     <i class="bi bi-exclamation-triangle display-1 text-secondary"></i>
                     <h1 class="display-1">404</h1>
-                    <h1 class="mb-4">Page Not Found</h1>
-                    <p class="mb-4">We’re sorry, the page you have been looking for does not exist! Please, go to our home page.</p>
-                    <a class="btn border-secondary rounded-pill py-3 px-5" href="{% url 'store:home' %}">Go Back To Home</a>
+                    <h1 class="mb-4">{% trans "Page Not Found" %}</h1>
+                    <p class="mb-4">{% trans "We’re sorry, the page you have been looking for does not exist! Please, go to our home page." %}</p>
+                    <a class="btn border-secondary rounded-pill py-3 px-5" href="{% url 'store:home' %}">{% trans "Go Back To Home" %}</a>
                 </div>
             </div>
         </div>

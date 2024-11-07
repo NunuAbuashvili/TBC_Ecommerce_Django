@@ -1,7 +1,8 @@
-from django.db.models import Count
 from django.contrib import admin
-from django.db.models import QuerySet
+from django.db.models import Count, QuerySet
 from django.http import HttpRequest
+from django.utils.translation import gettext_lazy as _
+
 from .models import Tea, Category, Tag
 
 
@@ -11,7 +12,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', 'category', 'place_of_origin', 'price', 'stock_quantity', 'rating')
     list_filter = ('rating', 'place_of_origin', 'is_active', 'contains_caffeine')
     search_fields = ('name', 'category__name')
-    search_help_text = 'Search by product name or category'
+    search_help_text = _('Search by product name or category')
     list_editable = ('stock_quantity', 'price')
     ordering = ('stock_quantity',)
     save_on_top = True
@@ -24,7 +25,7 @@ class CategoryAdmin(admin.ModelAdmin):
     """ Admin configuration for Category model. """
     list_display = ('name', 'is_active', 'number_of_products')
     search_fields = ('name',)
-    search_help_text = 'Search by category name'
+    search_help_text = _('Search by category name')
     ordering = ('name',)
     list_select_related = True
     save_on_top = True

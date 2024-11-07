@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}
-    <title>Tea Shop | Worldwide Tea Collection</title>
+    <title>{% trans "Tea Shop | Worldwide Tea Collection" %}</title>
 {% endblock %}
 
 {% block content %}
@@ -11,8 +12,8 @@
     <div class="container py-5">
         <div class="row g-5 align-items-center">
             <div class="col-md-12 col-lg-7">
-                <h4 class="mb-3 text-secondary">From All Over the World</h4>
-                <h1 class="mb-5 display-3 text-primary">Wide Collection of Premium Tea</h1>
+                <h4 class="mb-3 text-secondary">{% trans "From All Over the World" %}</h4>
+                <h1 class="mb-5 display-3 text-primary">{% trans "Wide Collection of Premium Tea" %}</h1>
                 {% include 'partials/search.html' with style='button' %}
             </div>
             <div class="col-md-12 col-lg-5">
@@ -20,20 +21,20 @@
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active rounded">
                             <img src="{% static 'img/christmas_tree_packages.jpg' %}" class="img-fluid w-100 h-100 bg-secondary rounded" alt="First slide">
-                            <a href="{% url 'store:category_page' 'christmas-tea' %}" class="btn px-4 py-2 text-white rounded">Christmas Collection</a>
+                            <a href="{% url 'store:category_page' 'christmas-tea' %}" class="btn px-4 py-2 text-white rounded">{% trans "Christmas Collection" %}</a>
                         </div>
                         <div class="carousel-item rounded">
                             <img src="{% static 'img/fruit_tea_packages.jpeg' %}" class="img-fluid w-100 h-100 rounded" alt="Second slide">
-                            <a href="{% url 'store:category_page' 'fruit-tea' %}" class="btn px-4 py-2 text-white rounded">Fruit Tea</a>
+                            <a href="{% url 'store:category_page' 'fruit-tea' %}" class="btn px-4 py-2 text-white rounded">{% trans "Fruit Tea" %}</a>
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
+                        <span class="visually-hidden">{% trans "Previous" %}</span>
                     </button>
                     <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
+                        <span class="visually-hidden">{% trans "Next" %}</span>
                     </button>
                 </div>
             </div>
@@ -53,8 +54,8 @@
                         <i class="fas fa-car-side fa-3x text-white"></i>
                     </div>
                     <div class="features-content text-center">
-                        <h5>Free Shipping</h5>
-                        <p class="mb-0">Free on order over $50</p>
+                        <h5>{% trans "Free Shipping" %}</h5>
+                        <p class="mb-0">{% trans "Free on order over $50" %}</p>
                     </div>
                 </div>
             </div>
@@ -64,8 +65,8 @@
                         <i class="fas fa-user-shield fa-3x text-white"></i>
                     </div>
                     <div class="features-content text-center">
-                        <h5>Security Payment</h5>
-                        <p class="mb-0">100% security payment</p>
+                        <h5>{% trans "Security Payment" %}</h5>
+                        <p class="mb-0">{% trans "100% security payment" %}</p>
                     </div>
                 </div>
             </div>
@@ -75,8 +76,8 @@
                         <i class="fas fa-exchange-alt fa-3x text-white"></i>
                     </div>
                     <div class="features-content text-center">
-                        <h5>30 Day Return</h5>
-                        <p class="mb-0">30 day money guarantee</p>
+                        <h5>{% trans "30 Day Return" %}</h5>
+                        <p class="mb-0">{% trans "30 day money guarantee" %}</p>
                     </div>
                 </div>
             </div>
@@ -86,8 +87,8 @@
                         <i class="fa fa-phone-alt fa-3x text-white"></i>
                     </div>
                     <div class="features-content text-center">
-                        <h5>24/7 Support</h5>
-                        <p class="mb-0">Contact us anytime</p>
+                        <h5>{% trans "24/7 Support" %}</h5>
+                        <p class="mb-0">{% trans "Contact us anytime" %}</p>
                     </div>
                 </div>
             </div>
@@ -102,33 +103,33 @@
         <div class="tab-class text-center">
             <div class="row g-4">
                 <div class="col-lg-4 text-start">
-                    <h1>Our Tea Collection</h1>
+                    <h1>{% trans "Our Tea Collection" %}</h1>
                 </div>
                 <div class="col-lg-8 text-end">
                     <ul class="nav nav-pills d-inline-flex text-center mb-5">
                         <li class="nav-item">
                             <a href="{% url 'store:shop' %}" class="d-flex m-2 py-2 bg-light rounded-pill active" >
-                                <span class="text-dark" style="width: 130px;">All Products</span>
+                                <span class="text-dark" style="width: 130px;">{% trans "All Products" %}</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="d-flex py-2 m-2 bg-light rounded-pill" href="#">
-                                <span class="text-dark" style="width: 130px;">Tea</span>
+                                <span class="text-dark" style="width: 130px;">{% trans "Tea" %}</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="d-flex m-2 py-2 bg-light rounded-pill" href="#">
-                                <span class="text-dark" style="width: 130px;">Teaware</span>
+                                <span class="text-dark" style="width: 130px;">{% trans "Teaware" %}</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="d-flex m-2 py-2 bg-light rounded-pill" href="#">
-                                <span class="text-dark" style="width: 130px;">Gifts</span>
+                                <span class="text-dark" style="width: 130px;">{% trans "Gifts" %}</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="d-flex m-2 py-2 bg-light rounded-pill" href="#">
-                                <span class="text-dark" style="width: 130px;">Cookies</span>
+                                <span class="text-dark" style="width: 130px;">{% trans "Cookies" %}</span>
                             </a>
                         </li>
                     </ul>
@@ -155,7 +156,7 @@
                                                         <div class="d-flex justify-content-between flex-lg-wrap">
                                                             <p class="text-dark fs-5 fw-bold mb-0">{{ product.price }}</p>
                                                             <button type="submit" class="btn border border-secondary rounded-pill px-3 text-primary">
-                                                                <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                                <i class="fa fa-shopping-bag me-2 text-primary"></i>{% trans "Add to cart" %}
                                                             </button>
                                                         </div>
                                                     </form>
@@ -184,8 +185,8 @@
                         <img src="{% static 'img/holiday_offers.jpeg' %}" class="img-fluid rounded-top w-100" alt="">
                         <div class="px-4 rounded-bottom">
                             <div class="service-content bg-primary text-center p-4 rounded">
-                                <h5 class="text-white">Holiday Offers</h5>
-                                <h3 class="mb-0">All for $5!</h3>
+                                <h5 class="text-white">{% trans "Holiday Offers" %}</h5>
+                                <h3 class="mb-0">{% trans "All for $5!" %}</h3>
                             </div>
                         </div>
                     </div>
@@ -197,8 +198,8 @@
                         <img src="{% static 'img/fruit_flavors.jpeg' %}" class="img-fluid rounded-top w-100" alt="">
                         <div class="px-4 rounded-bottom">
                             <div class="service-content bg-light text-center p-4 rounded">
-                                <h5 class="text-primary">Rich Taste</h5>
-                                <h3 class="mb-0">Fruit Flavors</h3>
+                                <h5 class="text-primary">{% trans "Rich Taste" %}</h5>
+                                <h3 class="mb-0">{% trans "Fruit Flavors" %}</h3>
                             </div>
                         </div>
                     </div>
@@ -210,8 +211,8 @@
                         <img src="{% static 'img/healthy_ingredients.jpeg' %}" class="img-fluid rounded-top w-100" alt="">
                         <div class="px-4 rounded-bottom">
                             <div class="service-content bg-secondary text-center p-4 rounded">
-                                <h5 class="text-white">Healthy</h5>
-                                <h3 class="mb-0">Ingredients</h3>
+                                <h5 class="text-white">{% trans "Healthy" %}</h5>
+                                <h3 class="mb-0">{% trans "Ingredients" %}</h3>
                             </div>
                         </div>
                     </div>
@@ -228,10 +229,10 @@
         <div class="row g-4 align-items-center">
             <div class="col-lg-6">
                 <div class="py-4">
-                    <h1 class="display-3 text-white">Different Flavors</h1>
-                    <p class="fw-normal display-3 text-dark mb-4">in Our Store</p>
-                    <p class="mb-4 text-dark">Our teas blend premium leaves with natural ingredients to offer unique flavors in every cup.</p>
-                    <a href="{% url 'store:shop' %}" class="banner-btn btn border-2 border-white rounded-pill text-dark py-3 px-5">BUY</a>
+                    <h1 class="display-3 text-white">{% trans "Different Flavors" %}</h1>
+                    <p class="fw-normal display-3 text-dark mb-4">{% trans "in Our Store" %}</p>
+                    <p class="mb-4 text-dark">{% trans "Our teas blend premium leaves with natural ingredients to offer unique flavors in every cup." %}</p>
+                    <a href="{% url 'store:shop' %}" class="banner-btn btn border-2 border-white rounded-pill text-dark py-3 px-5">{% trans "BUY" %}</a>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -248,8 +249,8 @@
 <div class="container-fluid py-5">
     <div class="container py-5">
         <div class="text-center mx-auto mb-5" style="max-width: 700px;">
-            <h1 class="display-4">Most Beloved Teas</h1>
-            <p>Browse our top-rated teas, handpicked with perfect 5-star ratings from tea lovers.</p>
+            <h1 class="display-4">{% trans "Most Beloved Teas" %}</h1>
+            <p>{% trans "Browse our top-rated teas, handpicked with perfect 5-star ratings from tea lovers." %}</p>
         </div>
         <div class="row g-4">
             {% for top_rated_product in products_with_highest_rating %}
@@ -276,7 +277,7 @@
                                     </div>
                                     <h4 class="mb-3">${{ top_rated_product.price }}</h4>
                                     <button type="submit" class="btn border border-secondary rounded-pill px-3 text-primary">
-                                        <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                        <i class="fa fa-shopping-bag me-2 text-primary"></i>{% trans "Add to cart" %}
                                     </button>
                                 </div>
                             </form>
@@ -297,28 +298,28 @@
                 <div class="col-md-6 col-lg-6 col-xl-3">
                     <div class="counter bg-white rounded p-5">
                         <i class="fa fa-users text-secondary"></i>
-                        <h4>satisfied customers</h4>
+                        <h4>{% trans "satisfied customers" %}</h4>
                         <h1>1963</h1>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-6 col-xl-3">
                     <div class="counter bg-white rounded p-5">
                         <i class="fa fa-users text-secondary"></i>
-                        <h4>quality of service</h4>
+                        <h4>{% trans "quality of service" %}</h4>
                         <h1>99%</h1>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-6 col-xl-3">
                     <div class="counter bg-white rounded p-5">
                         <i class="fa fa-users text-secondary"></i>
-                        <h4>quality certificates</h4>
+                        <h4>{% trans "quality certificates" %}</h4>
                         <h1>33</h1>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-6 col-xl-3">
                     <div class="counter bg-white rounded p-5">
                         <i class="fa fa-users text-secondary"></i>
-                        <h4>Available Products</h4>
+                        <h4>{% trans "Available Products" %}</h4>
                         <h1>789</h1>
                     </div>
                 </div>
@@ -333,15 +334,15 @@
 <div class="container-fluid testimonial py-5">
     <div class="container py-5">
         <div class="testimonial-header text-center">
-            <h4 class="text-primary">Our Testimonial</h4>
-            <h1 class="display-5 mb-5 text-dark">Our Client Saying!</h1>
+            <h4 class="text-primary">{% trans "Our Testimonial" %}</h4>
+            <h1 class="display-5 mb-5 text-dark">{% trans "Our Client Saying!" %}</h1>
         </div>
         <div class="owl-carousel testimonial-carousel">
             <div class="testimonial-item img-border-radius bg-light rounded p-4">
                 <div class="position-relative">
                     <i class="fa fa-quote-right fa-2x text-secondary position-absolute" style="bottom: 30px; right: 0;"></i>
                     <div class="mb-4 pb-4 border-bottom border-secondary">
-                        <p class="mb-0">This tea is as sweet as a pot of honey! I think I’ll have just one more cup!
+                        <p class="mb-0">{% trans "This tea is as sweet as a pot of honey! I think I’ll have just one more cup!" %}
                         </p>
                     </div>
                     <div class="d-flex align-items-center flex-nowrap">
@@ -349,7 +350,7 @@
                             <img src="{% static 'img/winnie_the_pooh.jpg' %}" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
                         </div>
                         <div class="ms-4 d-block">
-                            <h4 class="text-dark">Winnie the Pooh</h4>
+                            <h4 class="text-dark">{% trans "Winnie the Pooh" %}</h4>
                             <div class="d-flex pe-5">
                                 <i class="fas fa-star text-primary"></i>
                                 <i class="fas fa-star text-primary"></i>
@@ -365,7 +366,7 @@
                 <div class="position-relative">
                     <i class="fa fa-quote-right fa-2x text-secondary position-absolute" style="bottom: 30px; right: 0;"></i>
                     <div class="mb-4 pb-4 border-bottom border-secondary">
-                        <p class="mb-0">I may be a dog, but this tea is so good, I’d give up chasing the Red Baron for a cozy tea break.
+                        <p class="mb-0">{% trans "I may be a dog, but this tea is so good, I’d give up chasing the Red Baron for a cozy tea break." %}
                         </p>
                     </div>
                     <div class="d-flex align-items-center flex-nowrap">
@@ -373,7 +374,7 @@
                             <img src="{% static 'img/snoopy.jpg' %}" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
                         </div>
                         <div class="ms-4 d-block">
-                            <h4 class="text-dark">Snoopy</h4>
+                            <h4 class="text-dark">{% trans "Snoopy" %}</h4>
                             <div class="d-flex pe-5">
                                 <i class="fas fa-star text-primary"></i>
                                 <i class="fas fa-star text-primary"></i>
@@ -389,7 +390,7 @@
                 <div class="position-relative">
                     <i class="fa fa-quote-right fa-2x text-secondary position-absolute" style="bottom: 30px; right: 0;"></i>
                     <div class="mb-4 pb-4 border-bottom border-secondary">
-                        <p class="mb-0">This tea makes me feel all bubbly inside! If I had thumbs, I’d give it two thumbs up!
+                        <p class="mb-0">{% trans "This tea makes me feel all bubbly inside! If I had thumbs, I’d give it two thumbs up!" %}
                         </p>
                     </div>
                     <div class="d-flex align-items-center flex-nowrap">
@@ -397,7 +398,7 @@
                             <img src="{% static 'img/mrs.potts_and_chip.jpg' %}" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
                         </div>
                         <div class="ms-4 d-block">
-                            <h4 class="text-dark">Mrs. Potts and Chip</h4>
+                            <h4 class="text-dark">{% trans "Mrs. Potts and Chip" %}</h4>
                             <div class="d-flex pe-5">
                                 <i class="fas fa-star text-primary"></i>
                                 <i class="fas fa-star text-primary"></i>

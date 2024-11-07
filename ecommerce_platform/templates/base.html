@@ -1,5 +1,5 @@
 {% load static %}
-{% load cache %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,62 +43,75 @@
         <!-- Spinner End -->
         
         <!-- Navbar start -->
-        {% cache 600 'header_topbar' request.user %}
         <div class="container-fluid fixed-top">
             <div class="container topbar bg-primary d-none d-lg-block">
                 <div class="d-flex justify-content-between">
                     <div class="top-info ps-2">
-                        <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">Tbilisi, Georgia</a></small>
+                        <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">{% trans "Tbilisi, Georgia" %}</a></small>
                         <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">abuashvilinunu@gmail.com</a></small>
                     </div>
                     <div class="top-link pe-2">
                         {% if user.is_authenticated %}
-                            <a href="#" class="text-white"><small class="text-white mx-2">Account</small>/</a>
-                            <a href="{% url 'accounts:logout' %}" class="text-white"><small class="text-white ms-2">Sign Out</small></a>
+                            <a href="#" class="text-white"><small class="text-white mx-2">{% trans "Account" %}</small>/</a>
+                            <a href="{% url 'accounts:logout' %}" class="text-white"><small class="text-white ms-2">{% trans "Sign Out" %}</small></a>
                         {% else %}
-                            <a href="{% url 'accounts:register' %}" class="text-white"><small class="text-white mx-2">Sign Up</small>/</a>
-                            <a href="{% url 'accounts:login' %}" class="text-white"><small class="text-white mx-2">Sign In</small></a>
+                            <a href="{% url 'accounts:register' %}" class="text-white"><small class="text-white mx-2">{% trans "Sign Up" %}</small>/</a>
+                            <a href="{% url 'accounts:login' %}" class="text-white"><small class="text-white mx-2">{% trans "Sign In" %}</small></a>
                         {% endif %}
+                        <form action="{% url 'set_language' %}" method="post" class="d-inline-block">
+                            {% csrf_token %}
+                            <input name="next" type="hidden" value="{{ redirect_to }}">
+                            <select name="language" class="form-select form-select-sm bg-primary text-white">
+                                {% get_current_language as LANGUAGE_CODE %}
+                                {% get_available_languages as LANGUAGES %}
+                                {% get_language_info_list for LANGUAGES as languages %}
+                                {% for language in languages %}
+                                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                                        {{ language.name_local }} ({{ language.code }})
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </form>
+
+                        <script>
+                            document.querySelector('select[name="language"]').onchange = function() {
+                                this.form.submit();
+                            };
+                        </script>
+
                     </div>
                 </div>
             </div>
-            {% endcache %}
-        
+
             <div class="container px-0">
                 <nav class="navbar navbar-light bg-white navbar-expand-xl">
-                    {% cache 600 'header_main_nav' %}
-                    <a href="{% url 'store:home' %}" class="navbar-brand"><h1 class="text-primary display-6">Tea Shop</h1></a>
+                    <a href="{% url 'store:home' %}" class="navbar-brand"><h1 class="text-primary display-6">{% trans "Tea Shop" %}</h1></a>
                     <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="fa fa-bars text-primary"></span>
                     </button>
                     <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
-                            <a href="{% url 'store:home' %}" class="nav-item nav-link">Home</a>
-                            <a href="{% url 'store:shop' %}" class="nav-item nav-link">Shop</a>
+                            <a href="{% url 'store:home' %}" class="nav-item nav-link">{% trans "Home" %}</a>
+                            <a href="{% url 'store:shop' %}" class="nav-item nav-link">{% trans "Shop" %}</a>
                             <div class="nav-item dropdown">
-                                <a href="{% url 'store:shop' %}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Categories</a>
+                                <a href="{% url 'store:shop' %}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{% trans "Categories" %}</a>
                                 <div class="dropdown-menu m-0 bg-secondary rounded-0">
                                     {% for category in categories %}
                                         <a href="{% url 'store:category_page' category.slug %}" class="dropdown-item">{{ category.name }}</a>
                                     {% endfor %}
                                 </div>
                             </div>
-                            <a href="{% url 'store:contact' %}" class="nav-item nav-link">Contact</a>
+                            <a href="{% url 'store:contact' %}" class="nav-item nav-link">{% trans "Contact" %}</a>
                         </div>
-                    {% endcache %}
                         <div class="d-flex m-3 me-0">
-                            {% cache 600 'header_search_button' %}
                             <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-primary"></i></button>
-                            {% endcache %}
                             <a href="{% url 'order:cart' %}" class="position-relative me-4 my-auto">
                                 <i class="fa fa-shopping-bag fa-2x"></i>
                                 <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">{{ cart_length }}</span>
                             </a>
-                            {% cache 600 'header_user_icon' %}
                             <a href="#" class="my-auto">
                                 <i class="fas fa-user fa-2x"></i>
                             </a>
-                            {% endcache %}
                         </div>
                     </div>
                 </nav>
@@ -107,12 +120,11 @@
         <!-- Navbar End -->
         
         <!-- Modal Search Start -->
-        {% cache 600 'search_modal' %}
         <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-fullscreen">
                 <div class="modal-content rounded-0">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Search by product name</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">{% trans "Search by product name" %}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body d-flex align-items-center">
@@ -121,7 +133,6 @@
                 </div>
             </div>
         </div>
-        {% endcache %}
         <!-- Modal Search End -->
     
     {% block content %}
@@ -135,14 +146,14 @@
                     <div class="row g-4">
                         <div class="col-lg-3">
                             <a href="{% url 'store:home' %}">
-                                <h1 class="text-primary mb-0">Tea Shop</h1>
+                                <h1 class="text-primary mb-0">{% trans "Tea Shop" %}</h1>
                             </a>
                         </div>
                         <div class="col-lg-6">
                             <div class="position-relative mx-auto">
-                                <label for="email_input" class="visually-hidden">Email subscription</label>
-                                <input class="form-control border-0 w-100 py-3 px-4 rounded-pill" type="number" name='subscription_query' id='email_input' placeholder="Your Email">
-                                <button type="submit" class="btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white" style="top: 0; right: 0;">Subscribe Now</button>
+                                <label for="email_input" class="visually-hidden">{% trans "Email subscription" %}</label>
+                                <input class="form-control border-0 w-100 py-3 px-4 rounded-pill" type="number" name='subscription_query' id='email_input' placeholder="{% trans 'Your Email' %}">
+                                <button type="submit" class="btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white" style="top: 0; right: 0;">{% trans "Subscribe Now" %}</button>
                             </div>
                         </div>
                         <div class="col-lg-3">
@@ -158,42 +169,41 @@
                 <div class="row g-5">
                     <div class="col-lg-3 col-md-6">
                         <div class="footer-item">
-                            <h4 class="text-light mb-3">About Tea</h4>
+                            <h4 class="text-light mb-3">{% trans "About Tea" %}</h4>
                             <p class="mb-4">
-                                Fresh brewed tea is 100% natural, fat-free, calorie-free, gluten-free, sugar-free, 
-                                and low in caffeine — tea is the healthy choice.
+                                {% trans "Fresh brewed tea is 100% natural, fat-free, calorie-free, gluten-free, sugar-free, and low in caffeine — tea is the healthy choice." %}
                                 </p>
-                            <a href="https://www.theteaspot.com/pages/about-tea" target="_blank" class="btn border-secondary py-2 px-4 rounded-pill text-primary">Read More</a>
+                            <a href="https://www.theteaspot.com/pages/about-tea" target="_blank" class="btn border-secondary py-2 px-4 rounded-pill text-primary">{% trans "Read More" %}</a>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="d-flex flex-column text-start footer-item">
-                            <h4 class="text-light mb-3">About Us</h4>
-                            <a class="btn-link" href="">Our Story</a>
-                            <a class="btn-link" href="{% url 'store:contact' %}">Contact Us</a>
-                            <a class="btn-link" href="">Privacy Policy</a>
-                            <a class="btn-link" href="">Terms & Condition</a>
-                            <a class="btn-link" href="">Return Policy</a>
-                            <a class="btn-link" href="">FAQs & Help</a>
+                            <h4 class="text-light mb-3">{% trans "About Us" %}</h4>
+                            <a class="btn-link" href="">{% trans "Our Story" %}</a>
+                            <a class="btn-link" href="{% url 'store:contact' %}">{% trans "Contact Us" %}</a>
+                            <a class="btn-link" href="">{% trans "Privacy Policy" %}</a>
+                            <a class="btn-link" href="">{% trans "Terms & Condition" %}</a>
+                            <a class="btn-link" href="">{% trans "Return Policy" %}</a>
+                            <a class="btn-link" href="">{% trans "FAQs & Help" %}</a>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="d-flex flex-column text-start footer-item">
-                            <h4 class="text-light mb-3">Account</h4>
-                            <a class="btn-link" href="">My Account</a>
-                            <a class="btn-link" href="{% url 'order:cart' %}">Shopping Cart</a>
-                            <a class="btn-link" href="">Wishlist</a>
-                            <a class="btn-link" href="">Order History</a>
-                            <a class="btn-link" href="">International Orders</a>
+                            <h4 class="text-light mb-3">{% trans "Account" %}</h4>
+                            <a class="btn-link" href="">{% trans "My Account" %}</a>
+                            <a class="btn-link" href="{% url 'order:cart' %}">{% trans "Shopping Cart" %}</a>
+                            <a class="btn-link" href="">{% trans "Wishlist" %}</a>
+                            <a class="btn-link" href="">{% trans "Order History" %}</a>
+                            <a class="btn-link" href="">{% trans "International Orders" %}</a>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="footer-item">
-                            <h4 class="text-light mb-3">Contact</h4>
-                            <p>Address: Tbilisi, Georgia</p>
-                            <p>Email: abuashvilinunu@gmail.com</p>
-                            <p>Phone: +995558101010</p>
-                            <p>Payment Accepted</p>
+                            <h4 class="text-light mb-3">{% trans "Contact" %}</h4>
+                            <p>{% trans "Address: Tbilisi, Georgia" %}</p>
+                            <p>{% trans "Email" %}: abuashvilinunu@gmail.com</p>
+                            <p>{% trans "Phone" %}: +995558101010</p>
+                            <p>{% trans "Payment Accepted" %}</p>
                             <img src="{% static 'img/payment.png' %}" class="img-fluid" alt="">
                         </div>
                     </div>
@@ -207,7 +217,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Tea Shop</a>, All right reserved.</span>
+                        <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>{% trans "Tea Shop" %}</a>, {% trans "All right reserved." %}</span>
                     </div>
                     <div class="col-md-6 my-auto text-center text-md-end text-white">
                         Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>

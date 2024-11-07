@@ -1,0 +1,1040 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-07 09:59+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: .\accounts\admin.py:19
+msgid "Search by username or country"
+msgstr "მოძებნეთ მომხმარებლის სახელის ან ქვეყნის მიხედვით"
+
+#: .\accounts\admin.py:23
+msgid "Account Information"
+msgstr "ინფორმაცია ანგარიშის შესახებ"
+
+#: .\accounts\admin.py:26
+msgid "Personal Details"
+msgstr "პირადი მონაცემები"
+
+#: .\accounts\admin.py:29
+msgid "Contact Information"
+msgstr "საკონტაქტო ინფორმაცია"
+
+#: .\accounts\admin.py:32 .\order\templates\checkout.html:37
+#: .\store\templates\contact.html:60
+msgid "Address"
+msgstr "მისამართი"
+
+#: .\accounts\admin.py:35
+msgid "User Details"
+msgstr "მომხმარებლის დეტალები"
+
+#: .\accounts\admin.py:41
+msgid "Permissions"
+msgstr "ნებართვები"
+
+#: .\accounts\admin.py:68
+msgid "Custom User"
+msgstr "მომხმარებელი"
+
+#: .\accounts\admin.py:69
+msgid "Custom Users"
+msgstr "მომხმარებლები"
+
+#: .\accounts\choices.py:5
+msgid "Male"
+msgstr "კაცი"
+
+#: .\accounts\choices.py:6
+msgid "Female"
+msgstr "ქალი"
+
+#: .\accounts\choices.py:7
+msgid "Other"
+msgstr "სხვა"
+
+#: .\accounts\choices.py:8
+msgid "Prefer Not To Say"
+msgstr "პასუხისგან თავს შევიკავებ"
+
+#: .\accounts\forms.py:13 .\accounts\forms.py:54
+#: .\order\templates\checkout.html:57
+msgid "Email Address"
+msgstr "ელექტრონული ფოსტის მისამართი"
+
+#: .\accounts\forms.py:15
+msgid "Date of Birth"
+msgstr "დაბადების თარიღი"
+
+#: .\accounts\forms.py:38
+msgid "Username"
+msgstr "მომხმარებელი"
+
+#: .\accounts\forms.py:39 .\order\templates\checkout.html:21
+msgid "First Name"
+msgstr "სახელი"
+
+#: .\accounts\forms.py:40 .\order\templates\checkout.html:27
+msgid "Last Name"
+msgstr "გვარი"
+
+#: .\accounts\forms.py:41
+msgid "Gender"
+msgstr "სქესი"
+
+#: .\accounts\forms.py:42 .\order\templates\checkout.html:45
+msgid "Country"
+msgstr "ქვეყანა"
+
+#: .\accounts\forms.py:43
+msgid "Password"
+msgstr "პაროლი"
+
+#: .\accounts\forms.py:44
+msgid "Password Confirmation"
+msgstr "გაიმეორეთ პაროლი"
+
+#: .\accounts\forms.py:59
+msgid "Please enter a correct email and password."
+msgstr "გთხოვთ, შეიყვანეთ სწორი ელექტრონული ფოსტა და პაროლი."
+
+#: .\accounts\forms.py:60
+msgid "This account is inactive."
+msgstr "ეს ანგარიში არ არის აქტიური."
+
+#: .\accounts\middleware.py:52
+msgid "Your session has expired due to inactivity. Sign in again."
+msgstr ""
+"თქვენი სესიის ვადა ამოიწურა უმოქმედობის გამო. გთხოვთ, თავიდან გაიარეთ "
+"ავტორიზაცია."
+
+#: .\accounts\models.py:33
+msgid "The Email field should not be empty."
+msgstr "ელექტრონული ფოსტის ველი არ უნდა იყოს ცარიელი."
+
+#: .\accounts\models.py:60
+msgid "Superuser must have is_staff=True."
+msgstr "სუპერმომხმარებელს აუცილებლად უნდა ჰქონდეს is_staff=True"
+
+#: .\accounts\models.py:62
+msgid "Superuser must have is_superuser=True."
+msgstr "სუპერმომხმარებელს აუცილებლად უნდა ჰქონდეს is_superuser=True"
+
+#: .\accounts\models.py:88
+msgid "email address"
+msgstr "ელექტრონული ფოსტის მისამართი"
+
+#: .\accounts\models.py:89
+msgid "phone number"
+msgstr "ტელეფონის ნომერი"
+
+#: .\accounts\models.py:92
+msgid "date of birth"
+msgstr "დაბადების თარიღი"
+
+#: .\accounts\models.py:94
+msgid "gender"
+msgstr "სქესი"
+
+#: .\accounts\models.py:99
+msgid "email verified"
+msgstr "დამოწმებულია თუ არა ელექტრონული ფოსტა"
+
+#: .\accounts\models.py:101
+msgid "account type"
+msgstr "ანგარიშის ტიპი"
+
+#: .\accounts\models.py:104
+msgid "Individual"
+msgstr "ფიზიკური პირი"
+
+#: .\accounts\models.py:105
+msgid "Company"
+msgstr "იურიდიული პირი"
+
+#: .\accounts\models.py:111
+msgid "country"
+msgstr "ქვეყანა"
+
+#: .\accounts\models.py:111
+msgid "Select country"
+msgstr "აირჩიეთ ქვეყანა"
+
+#: .\accounts\models.py:112
+msgid "city"
+msgstr "ქალაქი"
+
+#: .\accounts\models.py:113
+msgid "street address"
+msgstr "ქუჩა"
+
+#: .\accounts\models.py:114
+msgid "postal code"
+msgstr "საფოსტო კოდი"
+
+#: .\accounts\models.py:117
+msgid "newsletter subscription"
+msgstr "აქვს თუ არა გამოწერა"
+
+#: .\accounts\models.py:120
+msgid "last active"
+msgstr "ბოლო აქტიურობის დრო"
+
+#: .\accounts\models.py:131
+msgid "User"
+msgstr "მომხმარებელი"
+
+#: .\accounts\models.py:132
+msgid "Users"
+msgstr "მომხმარებლები"
+
+#: .\accounts\templates\login.html:6 .\accounts\templates\login.html:22
+#: .\accounts\templates\login.html:31 .\accounts\templates\register.html:69
+#: .\templates\base.html:59
+msgid "Sign In"
+msgstr "შესვლა"
+
+#: .\accounts\templates\login.html:36
+msgid "Not registered yet?"
+msgstr "ჯერ არ ხართ რეგისტრირებული?"
+
+#: .\accounts\templates\login.html:38 .\accounts\templates\register.html:63
+#: .\templates\base.html:58
+msgid "Sign Up"
+msgstr "რეგისტრაცია"
+
+#: .\accounts\templates\logout.html:5 .\templates\base.html:56
+msgid "Sign Out"
+msgstr "გამოსვლა"
+
+#: .\accounts\templates\logout.html:12
+msgid "You have been signed out."
+msgstr "თქვენ გამოხვედით საკუთარი ანგარიშიდან."
+
+#: .\accounts\templates\logout.html:14
+msgid "Sign In Again"
+msgstr "თავიდან შედით"
+
+#: .\accounts\templates\register.html:5
+msgid "Register"
+msgstr "რეგისტრაცია"
+
+#: .\accounts\templates\register.html:13
+msgid "Join Us"
+msgstr "შემოგვიერთდით"
+
+#: .\accounts\templates\register.html:47
+msgid "Your password can’t be too similar to your other personal information."
+msgstr "პაროლი არ უნდა ჰგავდეს თქვენს პირად ინფორმაციას."
+
+#: .\accounts\templates\register.html:50
+msgid "Your password must contain at least 8 characters."
+msgstr "პაროლი უნდა შეიცავდეს მინიმუმ რვა სიმბოლოს."
+
+#: .\accounts\templates\register.html:53
+msgid "Your password can’t be a commonly used password."
+msgstr "პაროლი არ უნდა იყოს შეიცავდეს შაბლონებს."
+
+#: .\accounts\templates\register.html:56
+msgid "Your password can’t be entirely numeric."
+msgstr "პაროლი არ უნდა შეიცავდეს მხოლოდ ციფრებს."
+
+#: .\accounts\templates\register.html:69
+msgid "Already Have an Account?"
+msgstr "უკვე გაქვთ ანგარიში?"
+
+#: .\accounts\views.py:92 .\accounts\views.py:108 .\order\views.py:80
+#: .\order\views.py:96
+#, python-format
+msgid "Only %(quantity)s item(s) available in stock."
+msgstr "მარაგში დარჩენილია მხოლოდ %(quantity)s პროდუქტი."
+
+#: .\accounts\views.py:98 .\order\views.py:86
+msgid "Sorry, the item is out of stock."
+msgstr "ვწუხვართ, პროდუქტის მარაგი ამოიწურა."
+
+#: .\accounts\views.py:115
+msgid "Product not found."
+msgstr "ასეთი პროდუქტი არ არსებობს."
+
+#: .\order\models.py:49
+msgid "User's Cart"
+msgstr "მომხმარებლის კალათა"
+
+#: .\order\models.py:50
+msgid "Users' Carts"
+msgstr "მომხმარებლების კალათა"
+
+#: .\order\models.py:95
+msgid "Cart's Item"
+msgstr "პროდუქტი კალათაში"
+
+#: .\order\models.py:96
+msgid "Cart's Items"
+msgstr "პროდუქტები კალათაში"
+
+#: .\order\templates\cart.html:6 .\templates\base.html:194
+msgid "Shopping Cart"
+msgstr "კალათა"
+
+#: .\order\templates\cart.html:20
+msgid "Product Image"
+msgstr "პროდუქტის ფოტო"
+
+#: .\order\templates\cart.html:21 .\order\templates\checkout.html:80
+#: .\store\templates\shop.html:27
+msgid "Name"
+msgstr "დასახელება"
+
+#: .\order\templates\cart.html:22 .\order\templates\checkout.html:81
+#: .\store\templates\shop.html:51
+msgid "Price"
+msgstr "ფასი"
+
+#: .\order\templates\cart.html:23 .\order\templates\checkout.html:82
+msgid "Quantity"
+msgstr "რაოდენობა"
+
+#: .\order\templates\cart.html:24 .\order\templates\cart.html:138
+#: .\order\templates\checkout.html:83
+msgid "Total"
+msgstr "ჯამი"
+
+#: .\order\templates\cart.html:25
+msgid "Actions"
+msgstr "ქმედება"
+
+#: .\order\templates\cart.html:101
+msgid "Coupon Code"
+msgstr "ფასდაკლების კოდი"
+
+#: .\order\templates\cart.html:106
+msgid "Enter coupon code"
+msgstr "შეიყვანეთ ფასდაკლების კოდი"
+
+#: .\order\templates\cart.html:110
+msgid "Apply Coupon"
+msgstr "გაააქტიურეთ ფასდაკლება"
+
+#: .\order\templates\cart.html:121
+msgid "Order Summary"
+msgstr "შეკვეთის დეტალები"
+
+#: .\order\templates\cart.html:123
+msgid "Subtotal"
+msgstr "სრული ღირებულება"
+
+#: .\order\templates\cart.html:127 .\order\templates\checkout.html:105
+msgid "Shipping"
+msgstr "მიწოდება"
+
+#: .\order\templates\cart.html:132
+msgid "Discount"
+msgstr "ფასდაკლება"
+
+#: .\order\templates\cart.html:144
+msgid "Proceed to Checkout"
+msgstr "შეკვეთის გაფორმება"
+
+#: .\order\templates\cart.html:153
+msgid "Your cart is empty"
+msgstr "თქვენი კალათა ცარიელია"
+
+#: .\order\templates\cart.html:154
+msgid "Browse our products and add items to your cart."
+msgstr ""
+"დაათვალიერეთ ჩვენი პროდუქტები და დაამატეთ სასურველი ნივთები თქვენს კალათაში."
+
+#: .\order\templates\cart.html:156 .\store\templates\contact.html:17
+msgid "Continue Shopping"
+msgstr "განაგრძეთ შეძენა"
+
+#: .\order\templates\checkout.html:6
+msgid "Checkout"
+msgstr "შეკვეთა"
+
+#: .\order\templates\checkout.html:15
+msgid "Billing details"
+msgstr "გადახდის დეტალები"
+
+#: .\order\templates\checkout.html:33
+msgid "Company Name"
+msgstr "კომპანიის დასახელება"
+
+#: .\order\templates\checkout.html:38
+msgid "Street name, street number"
+msgstr "ქუჩის დასახელება და ნომერი"
+
+#: .\order\templates\checkout.html:41
+msgid "Town/City"
+msgstr "ქალაქი"
+
+#: .\order\templates\checkout.html:49
+msgid "Postcode/Zip"
+msgstr "საფოსტო კოდი"
+
+#: .\order\templates\checkout.html:53
+msgid "Mobile"
+msgstr "ტელეფონის ნომერი"
+
+#: .\order\templates\checkout.html:62
+msgid "Create an account?"
+msgstr "გსურთ ანგარიშის შექმნა?"
+
+#: .\order\templates\checkout.html:67
+msgid "Ship to a different address?"
+msgstr "გსურთ მიწოდება სხვა მისამართზე?"
+
+#: .\order\templates\checkout.html:70
+msgid "Order Notes (Optional)"
+msgstr "დამატებითი მითითებები შეკვეთისათვის (სურვილისამებრ)"
+
+#: .\order\templates\checkout.html:79 .\store\models.py:58
+msgid "Products"
+msgstr "პროდუქტები"
+
+#: .\order\templates\checkout.html:111 .\store\templates\home.html:57
+msgid "Free Shipping"
+msgstr "უფასო მიწოდება"
+
+#: .\order\templates\checkout.html:115
+msgid "Fast Shipping"
+msgstr "სწრაფი მიწოდება"
+
+#: .\order\templates\checkout.html:119
+msgid "Free Local Pickup"
+msgstr "თავად გავიტან მაღაზიიდან (უფასო)"
+
+#: .\order\templates\checkout.html:128
+msgid "TOTAL"
+msgstr "ჯამი"
+
+#: .\order\templates\checkout.html:145
+msgid "Direct Bank Transfer"
+msgstr "პირდაპირი საბანკო გადარიცხვა"
+
+#: .\order\templates\checkout.html:147
+msgid ""
+"Make your payment directly into our bank account. Please use your Order ID "
+"as the payment reference. Your order will not be shipped until the funds "
+"have cleared in our account."
+msgstr ""
+"გადმორიცხეთ თანხა პირდაპირ ჩვენს საბანკო ანგარიშზე. გადახდის დროს, გთხოვთ, "
+"მიუთითეთ თქვენი შეკვეთის ნომერი. ნივთები გამოიგზავნება მას შემდეგ, რაც "
+"ანგარიშზე აისახება შესაბამისი ტრანზაქცია. "
+
+#: .\order\templates\checkout.html:154
+msgid "Check Payments"
+msgstr "ონლაინ გადახდა"
+
+#: .\order\templates\checkout.html:162
+msgid "Cash On Delivery"
+msgstr "ნაღდი ანგარიშსწორება ადგილზე"
+
+#: .\order\templates\checkout.html:170
+msgid "Paypal"
+msgstr "ფეიფალი"
+
+#: .\order\templates\checkout.html:175
+msgid "Place Order"
+msgstr "შეკვეთის გაფორმება"
+
+#: .\store\admin.py:15
+msgid "Search by product name or category"
+msgstr "მოძებნეთ პროდუქტის ან კატეგორიის დასახელებით"
+
+#: .\store\admin.py:28
+msgid "Search by category name"
+msgstr "მოძებნეთ კატეგორიის დასახელებით"
+
+#: .\store\models.py:32
+msgid "product name"
+msgstr "პროდუქტის დასახელება"
+
+#: .\store\models.py:34
+msgid "product description"
+msgstr "პროდუქტის აღწერა"
+
+#: .\store\models.py:35
+msgid "product manufacturer"
+msgstr "მწარმოებელი"
+
+#: .\store\models.py:36
+msgid "place of origin"
+msgstr "წარმოშობა"
+
+#: .\store\models.py:37
+msgid "ingredients"
+msgstr "ინგრედიენტები"
+
+#: .\store\models.py:38
+msgid "product price"
+msgstr "ფასი"
+
+#: .\store\models.py:39
+msgid "product stock quantity"
+msgstr "მარაგი"
+
+#: .\store\models.py:40
+msgid "image"
+msgstr "ფოტო"
+
+#: .\store\models.py:50
+msgid "does product contain caffeine"
+msgstr "შეიცავს თუ არა კოფეინს"
+
+#: .\store\models.py:57
+msgid "Product"
+msgstr "პროდუქტი"
+
+#: .\store\models.py:78
+msgid "category name"
+msgstr "კატეგორიის დასახელება"
+
+#: .\store\models.py:80
+msgid "category description"
+msgstr "კატეგორიის აღწერა"
+
+#: .\store\models.py:90 .\store\templates\shop-detail.html:27
+msgid "Category"
+msgstr "კატეგორია"
+
+#: .\store\models.py:91 .\templates\base.html:97
+#: .\templates\partials\categories.html:3
+msgid "Categories"
+msgstr "კატეგორიები"
+
+#: .\store\models.py:101
+msgid "product tag name"
+msgstr "კოლექციის დასახელება"
+
+#: .\store\models.py:107
+msgid "Product Tag"
+msgstr "კოლექცია"
+
+#: .\store\models.py:108
+msgid "Product Tags"
+msgstr "კოლექციები"
+
+#: .\store\templates\category-detail.html:18 .\store\templates\home.html:159
+#: .\store\templates\home.html:280 .\store\templates\shop-detail.html:64
+#: .\store\templates\shop.html:109
+#: .\templates\partials\related-products.html:23
+msgid "Add to cart"
+msgstr "კალათაში დამატება"
+
+#: .\store\templates\contact.html:5 .\templates\base.html:104
+#: .\templates\base.html:202
+msgid "Contact"
+msgstr "კონტაქტი"
+
+#: .\store\templates\contact.html:15
+#, python-format
+msgid "Thank you %(name)s!"
+msgstr "მადლობა %(name)s!"
+
+#: .\store\templates\contact.html:16
+msgid "We have received your email and will respond shortly."
+msgstr "მივიღეთ თქვენი ელექტრონული შეტყობინება და მალე გიპასუხებთ. "
+
+#: .\store\templates\contact.html:20
+#, python-format
+msgid "Sorry %(name)s"
+msgstr "ვწუხვარ, %(name)s"
+
+#: .\store\templates\contact.html:21
+msgid "An error occured while sending your email. Please, try again."
+msgstr "თქვენი ელექტრონული შეტყობინება ვერ გაიგზავნა. გთხოვთ, თავიდან სცადოთ."
+
+#: .\store\templates\contact.html:34 .\templates\base.html:183
+msgid "Contact Us"
+msgstr "დაგვიკავშირდით"
+
+#: .\store\templates\contact.html:47 .\store\templates\contact.html:48
+#: .\store\templates\shop-detail.html:132
+msgid "Your Name"
+msgstr "თქვენი სახელი"
+
+#: .\store\templates\contact.html:49 .\store\templates\contact.html:50
+#: .\store\templates\shop-detail.html:137 .\templates\base.html:155
+msgid "Your Email"
+msgstr "თქვენი ელექტრონული ფოსტა"
+
+#: .\store\templates\contact.html:51 .\store\templates\contact.html:52
+msgid "Your Message"
+msgstr "თქვენი შეტყობინება"
+
+#: .\store\templates\contact.html:61 .\templates\base.html:50
+msgid "Tbilisi, Georgia"
+msgstr "თბილისი, საქართველო"
+
+#: .\store\templates\contact.html:67
+msgid "Mail Us"
+msgstr "მოგვწერეთ"
+
+#: .\store\templates\contact.html:74
+msgid "Telephone"
+msgstr "ტელეფონი"
+
+#: .\store\templates\home.html:6
+msgid "Tea Shop | Worldwide Tea Collection"
+msgstr "ჩაის მაღაზია | კოლექცია მთელი მსოფლიოდან"
+
+#: .\store\templates\home.html:15
+msgid "From All Over the World"
+msgstr "მთელი მსოფლიოდან"
+
+#: .\store\templates\home.html:16
+msgid "Wide Collection of Premium Tea"
+msgstr "მაღალი ხარისხის ჩაის ფართო კოლექცია"
+
+#: .\store\templates\home.html:24
+msgid "Christmas Collection"
+msgstr "საშობაო კოლექცია"
+
+#: .\store\templates\home.html:28
+msgid "Fruit Tea"
+msgstr "ხილის ჩაი"
+
+#: .\store\templates\home.html:33
+msgid "Previous"
+msgstr "წინა"
+
+#: .\store\templates\home.html:37
+msgid "Next"
+msgstr "შემდეგი"
+
+#: .\store\templates\home.html:58
+msgid "Free on order over $50"
+msgstr "უფასო მიწოდება $50-ს ზემოთ შენაძენზე"
+
+#: .\store\templates\home.html:68
+msgid "Security Payment"
+msgstr "უსაფრთხო გადახდა"
+
+#: .\store\templates\home.html:69
+#, python-format
+msgid "100%% security payment"
+msgstr "100%% უსაფრთხო გადახდა"
+
+#: .\store\templates\home.html:79
+msgid "30 Day Return"
+msgstr "30-დღიანი დაბრუნების პერიოდი"
+
+#: .\store\templates\home.html:80
+msgid "30 day money guarantee"
+msgstr "30-დღიანი ფულის დაბრუნების გარანტია"
+
+#: .\store\templates\home.html:90
+msgid "24/7 Support"
+msgstr "24/7 მხარდაჭერა"
+
+#: .\store\templates\home.html:91
+msgid "Contact us anytime"
+msgstr "დაგვიკავშირდით ნებისმიერ დროს"
+
+#: .\store\templates\home.html:106 .\store\templates\shop.html:14
+msgid "Our Tea Collection"
+msgstr "ჩვენი ჩაის კოლექცია"
+
+#: .\store\templates\home.html:112
+msgid "All Products"
+msgstr "ყველა"
+
+#: .\store\templates\home.html:117
+msgid "Tea"
+msgstr "ჩაი"
+
+#: .\store\templates\home.html:122
+msgid "Teaware"
+msgstr "ჩაის ჭურჭელი"
+
+#: .\store\templates\home.html:127
+msgid "Gifts"
+msgstr "საჩუქრები"
+
+#: .\store\templates\home.html:132
+msgid "Cookies"
+msgstr "ტკბილეული"
+
+#: .\store\templates\home.html:188
+msgid "Holiday Offers"
+msgstr "დღესასწაულისთვის"
+
+#: .\store\templates\home.html:189
+msgid "All for $5!"
+msgstr "ყველაფერი 5 დოლარად!"
+
+#: .\store\templates\home.html:201
+msgid "Rich Taste"
+msgstr "მრავალფეროვანი გემო"
+
+#: .\store\templates\home.html:202
+msgid "Fruit Flavors"
+msgstr "ხილის ჩაი"
+
+#: .\store\templates\home.html:214
+msgid "Healthy"
+msgstr "ჯანსაღი"
+
+#: .\store\templates\home.html:215 .\store\templates\shop-detail.html:82
+msgid "Ingredients"
+msgstr "ინგრედიენტები"
+
+#: .\store\templates\home.html:232
+msgid "Different Flavors"
+msgstr "სხვადასხვა გემო"
+
+#: .\store\templates\home.html:233
+msgid "in Our Store"
+msgstr "ჩვენს მაღაზიაში"
+
+#: .\store\templates\home.html:234
+msgid ""
+"Our teas blend premium leaves with natural ingredients to offer unique "
+"flavors in every cup."
+msgstr ""
+"ჩვენი ჩაი აერთიანებს ბუნებრივ ინგრედიენტებსა და მაღალი ხარისხის ფოთლებს, "
+"რათა შემოგთავაზოთ უნიკალური არომატი."
+
+#: .\store\templates\home.html:235
+msgid "BUY"
+msgstr "ყიდვა"
+
+#: .\store\templates\home.html:252
+msgid "Most Beloved Teas"
+msgstr "ყველაზე საყვარელი პროდუქცია"
+
+#: .\store\templates\home.html:253
+msgid ""
+"Browse our top-rated teas, handpicked with perfect 5-star ratings from tea "
+"lovers."
+msgstr ""
+"დაათვალიერეთ ჩვენი მომხმარებლების მიერ შერჩეული ყველაზე მაღალი რეიტინგის "
+"მქონე პროდუქცია."
+
+#: .\store\templates\home.html:301
+msgid "satisfied customers"
+msgstr "კმაყოფილი მომხმარებლები"
+
+#: .\store\templates\home.html:308
+msgid "quality of service"
+msgstr "მომსახურების ხარისხი"
+
+#: .\store\templates\home.html:315
+msgid "quality certificates"
+msgstr "ხარისხის სერტიფიკატები"
+
+#: .\store\templates\home.html:322
+msgid "Available Products"
+msgstr "ხელმისაწვდომი პროდუქტები"
+
+#: .\store\templates\home.html:337
+msgid "Our Testimonial"
+msgstr "შეფასებები"
+
+#: .\store\templates\home.html:338
+msgid "Our Client Saying!"
+msgstr "რას ამბობენ ჩვენი მომხმარებლები!"
+
+#: .\store\templates\home.html:345
+msgid ""
+"This tea is as sweet as a pot of honey! I think I’ll have just one more cup!"
+msgstr ""
+"ეს ჩაი ისეთივე ტკბილია, როგორც თაფლის ქილა! კიდევ ერთ ჭიქას სიამოვნებით "
+"დავლევ!"
+
+#: .\store\templates\home.html:353
+msgid "Winnie the Pooh"
+msgstr "ვინი პუჰი"
+
+#: .\store\templates\home.html:369
+msgid ""
+"I may be a dog, but this tea is so good, I’d give up chasing the Red Baron "
+"for a cozy tea break."
+msgstr ""
+"შეიძლება ძაღლი ვარ, მაგრამ ეს ჩაი იმდენად კარგია, მყუდრო შესვენებისთვის "
+"დროებით წითელი ბარონის დევნაზეც კი არ ვიტყოდი უარს."
+
+#: .\store\templates\home.html:377
+msgid "Snoopy"
+msgstr "სნუპი"
+
+#: .\store\templates\home.html:393
+msgid ""
+"This tea makes me feel all bubbly inside! If I had thumbs, I’d give it two "
+"thumbs up!"
+msgstr ""
+"ამ ჩაის წყალობით ვგრძნობ, თითქოს ბუშტულებით ვივსები! ცერა თითი რომ მქონდეს, "
+"ორივე ცერა თითით მოვიწონებდი!"
+
+#: .\store\templates\home.html:401
+msgid "Mrs. Potts and Chip"
+msgstr "ქალბატონი პოტსი და ჩიპი"
+
+#: .\store\templates\shop-detail.html:74
+msgid "Description"
+msgstr "აღწერა"
+
+#: .\store\templates\shop-detail.html:77
+msgid "Reviews"
+msgstr "შეფასებები"
+
+#: .\store\templates\shop-detail.html:84
+msgid "Contains caffeine."
+msgstr "შეიცავს კოფეინს."
+
+#: .\store\templates\shop-detail.html:86
+msgid "Caffeine free."
+msgstr "არ შეიცავს კოფეინს."
+
+#: .\store\templates\shop-detail.html:104
+msgid ""
+"This is one of my favorite teas of all time! It is delicious and sweet "
+"without any sugar (thank you cinnamon), it is smooth and I love it both "
+"cold, and hot. You really made a winner with this tea. I highly recommend it."
+msgstr ""
+"ეს ჩემთვის ყველა დროის ერთ-ერთი საყვარელი ჩაია! გემრიელია და ტკბილი "
+"ყოველგვარი შაქრის გარეშე (დარიჩინის წყალობით), ერთგვაროვანია და მომწონს "
+"როგორც ცივი, ასევე ცხელი. ნამდვილად საუკეთესო ჩაია. გირჩევთ!"
+
+#: .\store\templates\shop-detail.html:121
+msgid ""
+"This is our favorite evening tea because it's dessert in a cup! It's loaded "
+"with tiny apple bits that are the highlight of the tea. They bring a fresh "
+"sweet taste (with no need to add honey), and the cinnamon and clove give an "
+"overall warmth. I think the orange peel might even soften those two spice a "
+"little bit--there is no bitterness at all, just nice balanced sweetness. The "
+"red rooibos tea itself has no caffeine so it's a beautiful treat after "
+"dinner."
+msgstr ""
+"ეს ჩვენი საყვარელი ჩაია ღამით დასალევად, რადგან ნამდვილი დესერტია ფინჯანში! "
+"შეიცავს ვაშლის პატარა ნაჭრებს, რაც ამ ჩაის მთავარი ღირსებაა. მათი წყალობით "
+"აქვს ჯანსაღი, ტკბილი გემო (არ არის საჭირო თაფლის დამატება), ხოლო დარიჩინი და "
+"მიხაკი დამატებით სიმყუდროვეს სძენს. ვფიქრობ, ფორთოხლის კანი არბილებს ამ ორი "
+"სანელებლის გემოს - საერთოდ არ იგრძნობა სიმწარე, მხოლოდ კარგად დაბალანსებული "
+"სიტკბო. წითელი როიბოსის ჩაი არ შეიცავს კოფეინს, ამიტომ ვახშმის შემდეგ "
+"შეგიძლიათ გემრიელად მიირთვათ. "
+
+#: .\store\templates\shop-detail.html:128
+msgid "Leave Your Comment"
+msgstr "დატოვეთ კომენტარი"
+
+#: .\store\templates\shop-detail.html:142
+msgid "Your Review"
+msgstr "თქვენი მიმოხილვა"
+
+#: .\store\templates\shop-detail.html:148
+msgid "Please rate:"
+msgstr "გთხოვთ, შეაფასეთ:"
+
+#: .\store\templates\shop-detail.html:157
+msgid "Post Comment"
+msgstr "გამოაქვეყნეთ კომენტარი"
+
+#: .\store\templates\shop-detail.html:174 .\store\templates\shop.html:81
+msgid "Holiday Products"
+msgstr "სადღესასწაულო პროდუქცია"
+
+#: .\store\templates\shop-detail.html:187
+msgid "Related Products"
+msgstr "მსგავსი პროდუქტები"
+
+#: .\store\templates\shop.html:6 .\templates\base.html:95
+#: .\templates\partials\single-page-header.html:7
+msgid "Shop"
+msgstr "მაღაზია"
+
+#: .\store\templates\shop.html:28
+msgid "Rating"
+msgstr "შეფასებით"
+
+#: .\store\templates\shop.html:29
+msgid "Price ↑"
+msgstr "ფასი: ზრდადობით"
+
+#: .\store\templates\shop.html:30
+msgid "Price ↓"
+msgstr "ფასი: კლებადობით"
+
+#: .\store\templates\shop.html:31
+msgid "Date Added"
+msgstr "დამატების თარიღით"
+
+#: .\store\templates\shop.html:33
+msgid "Sort"
+msgstr "დახარისხება"
+
+#: .\store\templates\shop.html:64
+msgid "Tags"
+msgstr "კოლექციები"
+
+#: .\store\templates\shop.html:74
+msgid "Filter"
+msgstr "გაფილტვრა"
+
+#: .\store\views.py:136
+#, python-format
+msgid "New Contact Form Submission from %(name)s"
+msgstr "ახალი საკონტაქტო ფორმა %(name)s(ი)სგან"
+
+#: .\store\views.py:150
+msgid "Your message has been sent."
+msgstr "თქვენი შეტყობინება წარმატებით გაიგზავნა."
+
+#: .\templates\404.html:5 .\templates\404.html:17
+msgid "Page Not Found"
+msgstr "აღნიშნული გვერდი ვერ მოიძებნა"
+
+#: .\templates\404.html:18
+msgid ""
+"We’re sorry, the page you have been looking for does not exist! Please, go "
+"to our home page."
+msgstr ""
+"გვერდი, რომელსაც ეძებდით, არ არსებობს. გთხოვთ, დაბრუნდით მთავარ გვერდზე."
+
+#: .\templates\404.html:19 .\templates\500.html:18
+msgid "Go Back To Home"
+msgstr "მთავარ გვერდზე დაბრუნება"
+
+#: .\templates\500.html:5 .\templates\500.html:16
+msgid "Server Error"
+msgstr "სერვერის შეცდომა"
+
+#: .\templates\500.html:17
+msgid ""
+"The server encountered an error and could not complete your request. Please, "
+"go to our home page."
+msgstr ""
+"სერვერმა ვერ შეასრულა თქვენი მოთხოვნა. გთხოვთ, დაბრუნდით მთავარ გვერდზე."
+
+#: .\templates\base.html:55 .\templates\base.html:192
+msgid "Account"
+msgstr "ანგარიში"
+
+#: .\templates\base.html:88 .\templates\base.html:149 .\templates\base.html:220
+msgid "Tea Shop"
+msgstr "ჩაის მაღაზია"
+
+#: .\templates\base.html:94 .\templates\partials\single-page-header.html:6
+msgid "Home"
+msgstr "მთავარი"
+
+#: .\templates\base.html:127
+msgid "Search by product name"
+msgstr "მოძებნეთ პროდუქცია"
+
+#: .\templates\base.html:154
+msgid "Email subscription"
+msgstr "გამოწერა"
+
+#: .\templates\base.html:156
+msgid "Subscribe Now"
+msgstr "გამოიწერეთ"
+
+#: .\templates\base.html:172
+msgid "About Tea"
+msgstr "ჩაის შესახებ"
+
+#: .\templates\base.html:174
+#, python-format
+msgid ""
+"Fresh brewed tea is 100%% natural, fat-free, calorie-free, gluten-free, "
+"sugar-free, and low in caffeine — tea is the healthy choice."
+msgstr ""
+"ახლად დაყენებული ჩაი არის 100%% ნატურალური, არ შეიცავს ცხიმებს, გლუტენსა და "
+"შაქარს, აქვს ნული კალორია და კოფეინის დაბალი შემცველობა - ჩაი არის თქვენი "
+"ჯანსაღი არჩევანი."
+
+#: .\templates\base.html:176
+msgid "Read More"
+msgstr "შეიტყვეთ მეტი"
+
+#: .\templates\base.html:181
+msgid "About Us"
+msgstr "ჩვენ შესახებ"
+
+#: .\templates\base.html:182
+msgid "Our Story"
+msgstr "ჩვენი ისტორია"
+
+#: .\templates\base.html:184
+msgid "Privacy Policy"
+msgstr "კონფიდენციალურობა"
+
+#: .\templates\base.html:185
+msgid "Terms & Condition"
+msgstr "წესები & პირობები"
+
+#: .\templates\base.html:186
+msgid "Return Policy"
+msgstr "დაბრუნება"
+
+#: .\templates\base.html:187
+msgid "FAQs & Help"
+msgstr "ხშირად დასმული კითხვები"
+
+#: .\templates\base.html:193
+msgid "My Account"
+msgstr "ჩემი ანგარიში"
+
+#: .\templates\base.html:195
+msgid "Wishlist"
+msgstr "სურვილების სია"
+
+#: .\templates\base.html:196
+msgid "Order History"
+msgstr "შესყიდვების ისტორია"
+
+#: .\templates\base.html:197
+msgid "International Orders"
+msgstr "საერთაშორისო შესყიდვები"
+
+#: .\templates\base.html:203
+msgid "Address: Tbilisi, Georgia"
+msgstr "მისამართი: თბილისი, საქართველო"
+
+#: .\templates\base.html:204
+msgid "Email"
+msgstr "ელექტრონული ფოსტა"
+
+#: .\templates\base.html:205
+msgid "Phone"
+msgstr "ტელეფონის ნომერი"
+
+#: .\templates\base.html:206
+msgid "Payment Accepted"
+msgstr "გადახდის მეთოდები"
+
+#: .\templates\base.html:220
+msgid "All right reserved."
+msgstr "ყველა უფლება დაცულია"
+
+#: .\templates\partials\holiday-products.html:30
+msgid "View More"
+msgstr "ვრცლად"
+
+#: .\templates\partials\search.html:10 .\templates\partials\search.html:23
+msgid "Search for tea..."
+msgstr "მოძებნეთ ჩაი..."
+
+#: .\templates\partials\search.html:15
+msgid "Search Now"
+msgstr "ძიება"
+
+msgid "%(model_name)s with this %(field_label)s already exists."
+msgstr "მომხმარებელი მოცემული ელექტრონული ფოსტის მისამართით უკვე არსებობს."

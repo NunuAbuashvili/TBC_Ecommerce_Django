@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}
-    <title>Shopping Cart | {{ site_name }}</title>
+    <title>{% trans "Shopping Cart" %}</title>
 {% endblock %}
 
 {% block content %}
@@ -16,12 +17,12 @@
                     <table class="table" aria-label="Shopping cart items">
                         <thead>
                             <tr>
-                                <th scope="col" class="text-nowrap">Product Image</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Total</th>
-                                <th scope="col"><span class="visually-hidden">Actions</span></th>
+                                <th scope="col" class="text-nowrap">{% trans "Product Image" %}</th>
+                                <th scope="col">{% trans "Name" %}</th>
+                                <th scope="col">{% trans "Price" %}</th>
+                                <th scope="col">{% trans "Quantity" %}</th>
+                                <th scope="col">{% trans "Total" %}</th>
+                                <th scope="col"><span class="visually-hidden">{% trans "Actions" %}</span></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -97,16 +98,16 @@
                     <div class="col-md-6">
                         <form class="d-flex gap-3" id="coupon-form">
                             <div class="flex-grow-1">
-                                <label for="coupon-code" class="visually-hidden">Coupon Code</label>
+                                <label for="coupon-code" class="visually-hidden">{% trans "Coupon Code" %}</label>
                                 <input type="text"
                                        id="coupon-code"
                                        name="coupon_code"
                                        class="form-control"
-                                       placeholder="Enter coupon code">
+                                       placeholder="{% trans 'Enter coupon code' %}">
                             </div>
                             <button type="submit"
                                     class="btn btn-primary">
-                                Apply Coupon
+                                {% trans "Apply Coupon" %}
                             </button>
                         </form>
                     </div>
@@ -117,30 +118,30 @@
                     <div class="col-md-6 col-lg-4">
                         <div class="card shadow-sm">
                             <div class="card-body">
-                                <h2 class="h4 mb-4">Order Summary</h2>
+                                <h2 class="h4 mb-4">{% trans "Order Summary" %}</h2>
                                 <div class="d-flex justify-content-between mb-3">
-                                    <span>Subtotal</span>
+                                    <span>{% trans "Subtotal" %}</span>
                                     <span>${{ subtotal|floatformat:2 }}</span>
                                 </div>
                                 <div class="d-flex justify-content-between mb-3">
-                                    <span>Shipping</span>
+                                    <span>{% trans "Shipping" %}</span>
                                     <span>${{ shipping|floatformat:2 }}</span>
                                 </div>
                                 {% if discount %}
                                 <div class="d-flex justify-content-between mb-3 text-success">
-                                    <span>Discount</span>
+                                    <span>{% trans "Discount" %}</span>
                                     <span>-${{ discount|floatformat:2 }}</span>
                                 </div>
                                 {% endif %}
                                 <div class="border-top pt-3 mt-3">
                                     <div class="d-flex justify-content-between">
-                                        <strong>Total</strong>
+                                        <strong>{% trans "Total" %}</strong>
                                         <strong>${{ total|floatformat:2 }}</strong>
                                     </div>
                                 </div>
                                 <a href="{% url 'order:checkout' %}"
                                    class="btn btn-primary w-100 mt-4">
-                                    Proceed to Checkout
+                                    {% trans "Proceed to Checkout" %}
                                 </a>
                             </div>
                         </div>
@@ -149,10 +150,10 @@
             {% else %}
                 <div class="text-center py-5">
                     <i class="fa fa-shopping-cart fa-3x text-muted mb-3"></i>
-                    <h2 class="h4 mb-3">Your cart is empty</h2>
-                    <p class="text-muted">Browse our products and add items to your cart.</p>
+                    <h2 class="h4 mb-3">{% trans "Your cart is empty" %}</h2>
+                    <p class="text-muted">{% trans "Browse our products and add items to your cart." %}</p>
                     <a href="{% url 'store:shop' %}" class="btn btn-primary mt-3">
-                        Continue Shopping
+                        {% trans "Continue Shopping" %}
                     </a>
                 </div>
             {% endif %}

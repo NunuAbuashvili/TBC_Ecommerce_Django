@@ -1,12 +1,14 @@
-from django.core.paginator import Paginator
+from django.contrib import messages
 from django.core.mail import mail_admins
+from django.core.paginator import Paginator
+from django.db.models import Q, Count
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
-from django.contrib import messages
-from django.db.models import Q, Count
+from django.utils.translation import gettext_lazy as _
 from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
+
 from .models import Tea, Category, Tag
 
 
@@ -122,6 +124,11 @@ class TeaListView(ListView):
         context['current_ordering'] = self.request.GET.get('ordering', 'name')
         context['search_query'] = self.request.GET.get('searched', '')
 
+        # რათა ფილტრის, ძიების ან სორტირების შედეგისთვისაც იმუშაოს პაგინაციამ
+        query_params = self.request.GET.copy()
+        query_params.pop('page', None)
+        context['query_params'] = query_params.urlencode()
+
         return context
 
 
@@ -131,7 +138,7 @@ def send_email(request):
         email = request.POST.get('email', '')
         message = request.POST.get('message', '')
 
-        subject = f'New Contact Form Submission from {name}'
+        subject = _('New Contact Form Submission from %(name)s') % {'name': name}
         message_body = f"""
         Name: {name}
         Email: {email}
@@ -143,9 +150,14 @@ def send_email(request):
                 subject=subject,
                 message=message_body,
             )
-            messages.success(request, 'Your message has been sent.')
+            messages.success(
+                request,
+                _('Your message has been sent.')
+            )
             return render(request, 'contact.html', context={'name': name})
         except Exception as error:
-            messages.error(request, f'An error occured while sending your emssage: {error}.')
-
+            messages.error(
+                request,
+                f'{_("An error occurred while sending your message")}: {error}'
+            )
     return render(request, 'contact.html')

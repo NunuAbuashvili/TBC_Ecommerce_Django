@@ -1,9 +1,12 @@
+from typing import Any
+
 from django.db import models
-from accounts.models import CustomUser
-from store.models import Tea
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from typing import Any
+from django.utils.translation import gettext_lazy as _
+
+from accounts.models import CustomUser
+from store.models import Tea
 
 
 class Cart(models.Model):
@@ -43,8 +46,8 @@ class Cart(models.Model):
         return f"{self.user.username}'s cart"
 
     class Meta:
-        verbose_name = "User's Cart"
-        verbose_name_plural = "Users' Carts"
+        verbose_name = _("User's Cart")
+        verbose_name_plural = _("Users' Carts")
 
 
 @receiver(post_save, sender=CustomUser)
@@ -89,3 +92,5 @@ class CartItem(models.Model):
 
     class Meta:
         unique_together = ('cart', 'product')
+        verbose_name = _("Cart's Item")
+        verbose_name_plural = _("Cart's Items")

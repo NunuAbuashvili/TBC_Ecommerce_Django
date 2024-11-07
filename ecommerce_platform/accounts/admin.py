@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.translation import gettext_lazy as _
 
 from .forms import CustomUserCreationForm
 from .models import CustomUser
@@ -15,29 +16,29 @@ class CustomUserAdmin(admin.ModelAdmin):
     )
     list_filter = ('account_type', 'is_verified', 'is_active')
     search_fields = ('username', 'country')
-    search_help_text = 'Search by username or country'
+    search_help_text = _('Search by username or country')
     ordering = ('date_of_birth',)
 
     fieldsets = (
-        ('Account Information', {
+        (_('Account Information'), {
             'fields': ('username', 'password')
         }),
-        ('Personal Details', {
+        (_('Personal Details'), {
             'fields': ('first_name', 'last_name', 'gender', 'date_of_birth')
         }),
-        ('Contact Information', {
+        (_('Contact Information'), {
             'fields': ('phone_number', 'email')
         }),
-        ('Address', {
+        (_('Address'), {
             'fields': ('country', 'city', 'street_address', 'postal_code')
         }),
-        ('User Details', {
+        (_('User Details'), {
             'fields': (
                 'date_joined', 'last_login', 'account_type',
                 'is_verified', 'is_active', 'newsletter_subscription'
             )
         }),
-        ('Permissions', {
+        (_('Permissions'), {
             'fields': ('groups', 'user_permissions', 'is_staff', 'is_superuser'),
             'classes': ('collapse',),
         }),
@@ -62,3 +63,7 @@ class CustomUserAdmin(admin.ModelAdmin):
         ]
 
         return ', '.join(filter(None, address_parts))
+
+    class Meta:
+        verbose_name = _('Custom User')
+        verbose_name_plural = _('Custom Users')

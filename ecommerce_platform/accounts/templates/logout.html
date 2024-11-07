@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}
+    <title>{% trans "Sign Out" %}</title>
+{% endblock %}
 
 {% block content %}
     {% include 'partials/single-page-header.html' %}
     <div class="container py-5">
         <div class="border-top pt-3">
-            <h2>You have been signed out.</h2>
+            <h2>{% trans "You have been signed out." %}</h2>
             <small class="text-muted pt-4">
-                <a class="ml-2" href="{% url 'accounts:login' %}">Sign In Again</a>
+                <a class="ml-2" href="{% url 'accounts:login' %}">{% trans "Sign In Again" %}</a>
             </small>
         </div>
     </div>

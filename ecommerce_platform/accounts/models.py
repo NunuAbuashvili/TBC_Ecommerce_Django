@@ -1,8 +1,11 @@
 from typing import Any, Dict
+
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+
 from django_countries.fields import CountryField
+
 from .choices import GenderChoices
 
 
@@ -88,6 +91,7 @@ class CustomUser(AbstractUser):
     # Account details
     date_of_birth = models.DateField(_('date of birth'), blank=True, null=True)
     gender = models.CharField(
+        verbose_name=_('gender'),
         max_length=2,
         choices=GenderChoices,
         default=GenderChoices.PREFER_NOT_TO_SAY,
@@ -97,14 +101,14 @@ class CustomUser(AbstractUser):
         _('account type'),
         max_length=20,
         choices=[
-            ('individual', 'Individual'),
-            ('company', 'Company'),
+            ('individual', _('Individual')),
+            ('company', _('Company')),
         ],
         default='individual',
     )
 
     # Address information
-    country = CountryField(blank_label="Select country")
+    country = CountryField(verbose_name=_("country"), blank_label=_("Select country"))
     city = models.CharField(_('city'), max_length=100, blank=True)
     street_address = models.CharField(_('street address'), max_length=255, blank=True)
     postal_code = models.CharField(_('postal code'), max_length=10, blank=True)

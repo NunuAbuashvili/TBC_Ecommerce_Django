@@ -1,9 +1,11 @@
-from django.http import HttpRequest, HttpResponse
-from django.utils import timezone
+from datetime import timedelta
+
 from django.contrib import messages
 from django.contrib.auth import get_user_model, logout
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import redirect
-from datetime import timedelta
+from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 
 
 class UpdateLastActivityMiddleware:
@@ -36,7 +38,7 @@ class SessionTimeoutMiddleware:
         Initialize the middleware with a default session timeout of 60 seconds.
         """
         self.get_response = get_response
-        self.session_timeout = 60
+        self.session_timeout = 900
 
     def __call__(self, request: HttpRequest) -> HttpResponse:
         """ Process the request and check for session timeout. """
@@ -45,7 +47,10 @@ class SessionTimeoutMiddleware:
             inactivity_duration = timezone.now() - last_activity_time
             if inactivity_duration.total_seconds() > self.session_timeout:
                 logout(request)
-                messages.warning(request, "Your session has expired due to inactivity. Sign in again.")
+                messages.warning(
+                    request,
+                    _("Your session has expired due to inactivity. Sign in again.")
+                )
                 request.session.flush()
                 return redirect('accounts:login')
 

@@ -1,9 +1,10 @@
+from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
-from django.contrib import messages
+from django.contrib.auth.views import LoginView
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.views import LoginView
+from django.utils.translation import gettext_lazy as _
 
 from .forms import CustomUserCreationForm, CustomAuthenticationForm
 from store.models import Tea
@@ -32,13 +33,13 @@ def register(request: HttpRequest) -> HttpResponse:
     password_error = []
     password_errors = form.errors.get('password2', [])
     for error in password_errors:
-        if 'similar to' in error:
+        if 'similar to' in error or 'გავს' in error:
             password_error.append('Similarity Error')
-        elif 'short' in error:
+        elif 'short' in error or 'მოკლე' in error:
             password_error.append('Short Password Error')
-        elif 'common' in error:
+        elif 'common' in error or 'ხშირად' in error:
             password_error.append('Common Password Error')
-        elif 'numeric' in error:
+        elif 'numeric' in error or 'ციფრებისგან' in error:
             password_error.append('Numeric Password Error')
     return render(request, 'register.html', {"form": form, "password_error": password_error})
 
@@ -76,7 +77,7 @@ class CustomLoginView(LoginView):
 
             try:
                 product = get_object_or_404(Tea, id=product_id)
-                cart, _ = Cart.objects.get_or_create(user=self.request.user)
+                cart, cart_created = Cart.objects.get_or_create(user=self.request.user)
                 cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
 
                 if not created:
@@ -86,19 +87,33 @@ class CustomLoginView(LoginView):
                     else:
                         available_quantity = product.stock_quantity - cart_item.quantity
                         if available_quantity > 0:
-                            messages.warning(self.request, f"Only {available_quantity} item(s) available in stock.")
+                            messages.warning(
+                                self.request,
+                                _('Only %(quantity)s item(s) available in stock.')
+                                % {'quantity': available_quantity},
+                            )
                         else:
-                            messages.warning(self.request, 'Sorry, the item is out of stock.')
+                            messages.warning(
+                                self.request,
+                                _('Sorry, the item is out of stock.')
+                            )
                         return redirect(request.META['HTTP_REFERER'])
                 else:
                     if quantity_to_add <= product.stock_quantity:
                         cart_item.quantity = quantity_to_add
                         cart_item.save()
                     else:
-                        messages.warning(self.request, f"Only {product.stock_quantity} item(s) available in stock.")
+                        messages.warning(
+                            self.request,
+                            _('Only %(quantity)s item(s) available in stock.')
+                            % {'quantity': product.stock_quantity},
+                        )
 
             except Tea.DoesNotExist:
-                messages.error(self.request, 'Product not found.')
+                messages.error(
+                    self.request,
+                    _('Product not found.')
+                )
 
         return response
 

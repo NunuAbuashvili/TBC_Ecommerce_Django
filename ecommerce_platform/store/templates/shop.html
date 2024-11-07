@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}
-    <title>Shop {{ current_category|default:'All' }}</title>
+    <title>{% trans "Shop" %}</title>
 {% endblock %}
 
 
 {% block content %}
-{% include 'partials/single-page-header.html' with page_title="Shop" category=current_category_instance %}
+{% include 'partials/single-page-header.html' with page_title=_("Shop") category=current_category_instance %}
 <div class="container-fluid tea py-5">
     <div class="container py-5">
-        <h1 class="mb-4">Our Tea Collection</h1>
+        <h1 class="mb-4">{% trans "Our Tea Collection" %}</h1>
         <div class="row g-4">
             <div class="col-lg-12">
                 <div class="row g-4">
@@ -23,13 +24,13 @@
                         <form method="get">
                             <div class="bg-light ps-3 py-3 rounded d-flex justify-content-between mb-4 w-100">
                                 <select id="sorting" name="ordering" class="border-0 form-select-sm bg-light me-3">
-                                    <option value="name" {% if current_ordering == 'name' %}selected{% endif %}>Name</option>
-                                    <option value="rating" {% if current_ordering == 'rating' %}selected{% endif %}>Rating</option>
-                                    <option value="low_high" {% if current_ordering == 'low_high' %}selected{% endif %}>Price ↑</option>
-                                    <option value="high_low" {% if current_ordering == 'high_low' %}selected{% endif %}>Price ↓</option>
-                                    <option value="date" {% if current_ordering == 'date' %}selected{% endif %}>Date Added</option>
+                                    <option value="name" {% if current_ordering == 'name' %}selected{% endif %}>{% trans "Name" %}</option>
+                                    <option value="rating" {% if current_ordering == 'rating' %}selected{% endif %}>{% trans "Rating" %}</option>
+                                    <option value="low_high" {% if current_ordering == 'low_high' %}selected{% endif %}>{% trans "Price ↑" %}</option>
+                                    <option value="high_low" {% if current_ordering == 'high_low' %}selected{% endif %}>{% trans "Price ↓" %}</option>
+                                    <option value="date" {% if current_ordering == 'date' %}selected{% endif %}>{% trans "Date Added" %}</option>
                                 </select>
-                                <button type="submit" class="btn btn-primary">Sort</button>
+                                <button type="submit" class="btn btn-primary">{% trans "Sort" %}</button>
                             </div>
                         </form>
                     </div>
@@ -47,7 +48,7 @@
                             <form method="get">
                                 <div class="col-lg-12">
                                     <div class="mb-3">
-                                        <h4 class="mb-2">Price</h4>
+                                        <h4 class="mb-2">{% trans "Price" %}</h4>
                                         <input name="price_range" type="range" class="form-range w-100" id="rangeInput"
                                                min="0" max="500"
                                                value="{{ current_price_upper_limit }}"
@@ -60,7 +61,7 @@
 
                                 <div class="col-lg-12">
                                     <div class="mb-3">
-                                        <h4>Tags</h4>
+                                        <h4>{% trans "Tags" %}</h4>
                                         {% for tag in tags %}
                                             <div class="mb-2">
                                                 <input type="radio" class="me-2" id="tag_{{ tag.id }}"
@@ -70,14 +71,14 @@
                                             </div>
                                         {% endfor %}
                                         <div class="d-flex justify-content-center my-4">
-                                            <button type="submit" class="btn border border-secondary px-4 py-3 rounded-pill text-primary w-100">Filter</button>
+                                            <button type="submit" class="btn border border-secondary px-4 py-3 rounded-pill text-primary w-100">{% trans "Filter" %}</button>
                                         </div>
                                     </div>
                                 </div>
                             </form>
 
                             <div class="col-lg-12">
-                                <h4 class="mb-3">Holiday Products</h4>
+                                <h4 class="mb-3">{% trans "Holiday Products" %}</h4>
                                 {% include 'partials/holiday-products.html' %}
                             </div>
                             <div class="col-lg-12">
@@ -105,7 +106,7 @@
                                                     <div class="d-flex justify-content-between flex-lg-wrap mt-auto">
                                                         <p class="text-dark fs-5 fw-bold mb-0">${{ product.price }}</p>
                                                         <button type="submit" class="btn border border-secondary rounded-pill px-3 text-primary">
-                                                            <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                            <i class="fa fa-shopping-bag me-2 text-primary"></i>{% trans "Add to cart" %}
                                                         </button>
                                                     </div>
                                                 </form>
@@ -118,19 +119,19 @@
                             <div class="col-12">
                                 <div class="pagination d-flex justify-content-center mt-5">
                                     {% if page_obj.has_previous %}
-                                        <a href="?page={{ page_obj.previous_page_number }}" class="rounded">&laquo;</a>
+                                        <a href="?{{ query_params }}&page={{ page_obj.previous_page_number }}" class="rounded">&laquo;</a>
                                     {% endif %}
 
                                     {% for num in page_obj.paginator.page_range %}
                                         {% if page_obj.number == num %}
-                                            <a href="?page={{ num }}" class="active rounded">{{ num }}</a>
+                                            <a href="?{{ query_params }}&page={{ num }}" class="active rounded">{{ num }}</a>
                                         {% else %}
-                                            <a href="?page={{ num }}" class="rounded">{{ num }}</a>
+                                            <a href="?{{ query_params }}&page={{ num }}" class="rounded">{{ num }}</a>
                                         {% endif %}
                                     {% endfor %}
 
                                     {% if page_obj.has_next %}
-                                        <a href="?page={{ page_obj.next_page_number }}" class="rounded">&raquo;</a>
+                                        <a href="?{{ query_params }}&page={{ page_obj.next_page_number }}" class="rounded">&raquo;</a>
                                     {% endif %}
                                 </div>
                             </div>

@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <div class="owl-carousel vegetable-carousel justify-content-center">
     {% for product in related_products %}
@@ -14,10 +15,15 @@
                 <a href="{% url 'store:product_page' product.slug %}" class="tea-link">
                     <h4 class="text-truncate">{{ product.name }}</h4>
                 </a>
-                <div class="d-flex justify-content-between flex-lg-wrap">
-                    <p class="text-dark fs-5 fw-bold">${{ product.price }}</p>
-                    <a href="{% url 'order:add_to_cart' product.id %}" class="btn border border-secondary rounded-pill px-3 py-1 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                </div>
+                <form action="{% url 'order:add_to_cart' product.id %}" method="post">
+                    {% csrf_token %}
+                    <div class="d-flex justify-content-between flex-lg-wrap">
+                        <p class="text-dark fs-5 fw-bold">${{ product.price }}</p>
+                        <button type="submit" class="btn border border-secondary rounded-pill px-3 py-1 mb-4 text-primary">
+                            <i class="fa fa-shopping-bag me-2 text-primary"></i>{% trans "Add to cart" %}
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     {% endfor %}

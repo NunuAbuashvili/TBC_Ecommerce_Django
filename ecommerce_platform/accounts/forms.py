@@ -1,5 +1,7 @@
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django import forms
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.utils.translation import gettext_lazy as _
+
 from .models import CustomUser
 
 
@@ -8,8 +10,11 @@ class CustomUserCreationForm(UserCreationForm):
     Custom form for user registration extending Django's UserCreationForm.
     Adds additional fields for email, date of birth, and other user information.
     """
-    email = forms.EmailField(required=True)
-    date_of_birth = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    email = forms.EmailField(label=_('Email Address'), required=True)
+    date_of_birth = forms.DateField(
+        label=_('Date of Birth'),
+        widget=forms.DateInput(attrs={'type': 'date'})
+    )
 
     def __init__(self, *args, **kwargs):
         super(CustomUserCreationForm, self).__init__(*args, **kwargs)
@@ -29,6 +34,15 @@ class CustomUserCreationForm(UserCreationForm):
         fields = UserCreationForm.Meta.fields + (
             'email', 'first_name', 'last_name', 'date_of_birth', 'gender', 'country',
         )
+        labels = {
+            'username': _('Username'),
+            'first_name': _('First Name'),
+            'last_name': _('Last Name'),
+            'gender': _('Gender'),
+            'country': _('Country'),
+            'password1': _('Password'),
+            'password2': _('Password Confirmation'),
+        }
 
 
 class CustomAuthenticationForm(AuthenticationForm):
@@ -36,9 +50,12 @@ class CustomAuthenticationForm(AuthenticationForm):
     Custom authentication form that uses email instead of username.
     Customizes error messages and widget attributes for email-based login.
     """
-    username = forms.EmailField(label='Email Address', widget=forms.TextInput(attrs={'autofocus': True}))
+    username = forms.EmailField(
+        label=_('Email Address'),
+        widget=forms.TextInput(attrs={'autofocus': True})
+    )
 
     error_messages = {
-        'invalid_login': 'Please enter a correct email and password.',
-        'inactive': 'This account is inactive.',
+        'invalid_login': _('Please enter a correct email and password.'),
+        'inactive': _('This account is inactive.'),
     }

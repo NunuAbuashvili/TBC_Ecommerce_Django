@@ -1,8 +1,10 @@
 from typing import Dict
+
 from django.db.models import Count
 from django.http import HttpRequest
-from .models import Category, Tea
+
 from order.models import Cart
+from .models import Category, Tea
 
 
 def common_data(request: HttpRequest) -> Dict[str, object]:

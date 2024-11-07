@@ -1,12 +1,14 @@
+from decimal import Decimal
+
+from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib import messages
+from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
 from django.views import View
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import UpdateView
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse
-from decimal import Decimal
 
 from store.models import Tea
 from .models import Cart, CartItem
@@ -54,7 +56,7 @@ class AddToCartView(LoginRequiredMixin, View):
         Handle POST requests for adding items to cart.
         """
         product = get_object_or_404(Tea, id=product_id)
-        cart, _ = Cart.objects.get_or_create(user=request.user)
+        cart, cart_created = Cart.objects.get_or_create(user=request.user)
         cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
 
         # პროდუქტის დეტალურ გვერდზე მომხმარებელს შეუძლია აირჩიოს,
@@ -74,10 +76,15 @@ class AddToCartView(LoginRequiredMixin, View):
                     available_quantity = product.stock_quantity - cart_item.quantity
                     if available_quantity > 0:
                         messages.warning(
-                            request, f"Only {available_quantity} item(s) available in stock."
+                            request,
+                            _('Only %(quantity)s item(s) available in stock.')
+                            % {'quantity': available_quantity}
                         )
                     else:
-                        messages.warning(request, 'Sorry, the item is out of stock.')
+                        messages.warning(
+                            request,
+                            _('Sorry, the item is out of stock.')
+                        )
                     return redirect(request.META['HTTP_REFERER'])
             # თუ პროდუქტს პირველად ვამატებთ კალათაში
             else:
@@ -85,7 +92,9 @@ class AddToCartView(LoginRequiredMixin, View):
                     cart_item.quantity = quantity_to_add
                 else:
                     messages.warning(
-                        self.request, f"Only {product.stock_quantity} item(s) available in stock."
+                        self.request,
+                        _('Only %(quantity)s item(s) available in stock.')
+                        % {'quantity': product.stock_quantity}
                     )
 
             cart_item.save()
