@@ -38,7 +38,7 @@ class SessionTimeoutMiddleware:
         Initialize the middleware with a default session timeout of 60 seconds.
         """
         self.get_response = get_response
-        self.session_timeout = 900
+        self.session_timeout = 60 * 5
 
     def __call__(self, request: HttpRequest) -> HttpResponse:
         """ Process the request and check for session timeout. """

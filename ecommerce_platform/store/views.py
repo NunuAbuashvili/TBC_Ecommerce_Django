@@ -124,7 +124,7 @@ class TeaListView(ListView):
         context['current_ordering'] = self.request.GET.get('ordering', 'name')
         context['search_query'] = self.request.GET.get('searched', '')
 
-        # რათა ფილტრის, ძიების ან სორტირების შედეგისთვისაც იმუშაოს პაგინაციამ
+        # რათა ერთდროულად იმუშაოს ფილტრის, ძიების ან სორტირების შედეგებმა და პაგინაციამ
         query_params = self.request.GET.copy()
         query_params.pop('page', None)
         context['query_params'] = query_params.urlencode()
@@ -132,7 +132,15 @@ class TeaListView(ListView):
         return context
 
 
-def send_email(request):
+def send_email(request: HttpRequest) -> HttpResponse:
+    """
+    Handle contact form submission and send email notification to website administrators.
+
+    This view processes POST requests containing contact form data (name, email, message)
+    and sends an email notification to all configured Django administrators. On successful
+    submission, the user receives a success message. If an error occurs during email
+    sending, an error message is displayed.
+    """
     if request.method == 'POST':
         name = request.POST.get('name', '').title()
         email = request.POST.get('email', '')

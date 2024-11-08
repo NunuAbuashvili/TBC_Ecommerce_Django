@@ -24,6 +24,7 @@ It is currently in the initial stage and will be expanded over time with more fe
     - Responsive design.
     - Intuitive navigation system.
     - Custom 404 error page.
+    - Custom 500 error page.
     - Category-based browsing.
     - Dynamic content loading from database.
 - **Shopping Experience**
@@ -34,12 +35,12 @@ It is currently in the initial stage and will be expanded over time with more fe
     - Checkout process (in development)
     - Product ratings display.
 - **User Features**
-    - Contact form for customer inquiries (in development).
+    - Contact form for customer inquiries.
     - User registration form.
     - User authentication system.
     - User logout.
-    - User profile (in development).
 - **Class-based Views**
+- **Support for two languages: English and Georgian.**
 
 
 ## Project Structure
@@ -121,6 +122,7 @@ templates/
 5. Run the development server: 
    ```bash
    python manage.py runserver
+6. Choose language from the header (EN/KA).
 
 
 ## Directory Structure
@@ -150,4 +152,4 @@ please note that major changes may be implemented as part of the learning journe
 This README is in its initial state and will be updated regularly as the project evolves. 
 Check back for the latest information on features and usage.
 
-*Last updated: [04.11.2024]*
+*Last updated: [08.11.2024]*
