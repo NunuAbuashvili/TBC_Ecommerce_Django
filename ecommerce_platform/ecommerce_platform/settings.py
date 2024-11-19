@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap4",
     "django_countries",
     "rosetta",
+    "corsheaders",
     "accounts.apps.AccountsConfig",
     "store.apps.StoreConfig",
     "order.apps.OrderConfig",
@@ -44,6 +45,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -179,3 +181,7 @@ LOCALE_PATHS = [
 ]
 
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",
+]
