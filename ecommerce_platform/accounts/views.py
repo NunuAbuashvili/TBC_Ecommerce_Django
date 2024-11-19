@@ -11,6 +11,16 @@ from store.models import Tea
 from order.models import Cart, CartItem
 
 
+def _password_validators_help_text_html(password_validators=None):
+    """
+    Return an HTML string with all help texts of all configured validators
+    in an <ul>.
+    """
+    help_texts = password_validators_help_texts(password_validators)
+    help_items = None
+    return format_html("<ul>{}</ul>", help_items) if help_items else ""
+
+
 def register(request: HttpRequest) -> HttpResponse:
     """
     Handle user registration.
@@ -26,22 +36,23 @@ def register(request: HttpRequest) -> HttpResponse:
         if form.is_valid():
             form.save()
             return redirect('accounts:login')
+        else:
+            password_error = []
+            password_errors = form.errors.get('password2', [])
+            for error in password_errors:
+                if 'similar to' in error or 'გავს' in error:
+                    password_error.append('Similarity Error')
+                elif 'short' in error or 'მოკლე' in error:
+                    password_error.append('Short Password Error')
+                elif 'common' in error or 'ხშირად' in error:
+                    password_error.append('Common Password Error')
+                elif 'numeric' in error or 'ციფრებისგან' in error:
+                    password_error.append('Numeric Password Error')
+            return render(request, 'register.html', {"form": form, "password_error": password_error})
     else:
         form = CustomUserCreationForm()
 
-
-    password_error = []
-    password_errors = form.errors.get('password2', [])
-    for error in password_errors:
-        if 'similar to' in error or 'გავს' in error:
-            password_error.append('Similarity Error')
-        elif 'short' in error or 'მოკლე' in error:
-            password_error.append('Short Password Error')
-        elif 'common' in error or 'ხშირად' in error:
-            password_error.append('Common Password Error')
-        elif 'numeric' in error or 'ციფრებისგან' in error:
-            password_error.append('Numeric Password Error')
-    return render(request, 'register.html', {"form": form, "password_error": password_error})
+    return render(request, 'register.html', {"form": form, "password_error": []})
 
 
 class CustomLoginView(LoginView):
