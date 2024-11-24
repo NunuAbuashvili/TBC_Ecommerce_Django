@@ -4,8 +4,6 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from versatileimagefield.fields import VersatileImageField
-
 
 class Tea(models.Model):
     """
@@ -37,7 +35,7 @@ class Tea(models.Model):
     ingredients = models.TextField(verbose_name=_('ingredients'), blank=True, null=True)
     price = models.DecimalField(verbose_name=_('product price'), max_digits=7, decimal_places=2)
     stock_quantity = models.PositiveIntegerField(verbose_name=_('product stock quantity'), default=0)
-    image = VersatileImageField(verbose_name=_('image'), upload_to='products/', null=True, blank=True)
+    image = models.ImageField(_('image'), upload_to='products/', null=True, blank=True)
     rating = models.PositiveIntegerField(
         validators=[
             MinValueValidator(1),

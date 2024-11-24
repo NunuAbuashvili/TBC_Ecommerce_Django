@@ -18,7 +18,7 @@
                             <div class="col-lg-6">
                                 <div class="border rounded">
                                     <a href="{% url 'store:product_page' product.slug %}">
-                                        <img src="{{ product.image.crop.402x402 }}" class="img-fluid rounded" alt="Image">
+                                        <img src="{{ product.image.url }}" class="img-fluid rounded" alt="Image">
                                     </a>
                                 </div>
                             </div>

@@ -6,7 +6,7 @@
         <div class="border border-primary rounded position-relative related-product-item">
             <div class="related-product-img">
                 <a href="{% url 'store:product_page' product.slug %}" class="tea-link">
-                    <img src="{{ product.image.crop.259x207 }}" class="img-fluid w-100 rounded-top" alt="">
+                    <img src="{{ product.image.url }}" class="img-fluid w-100 rounded-top" alt="">
                 </a>
             </div>
             <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">

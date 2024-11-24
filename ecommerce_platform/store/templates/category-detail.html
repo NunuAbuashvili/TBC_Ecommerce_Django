@@ -8,7 +8,7 @@
             <a href="{% url 'store:product_page' tea.slug %}" class="tea-link">
                 <div class="rounded position-relative tea-item">
                     <div class="tea-img">
-                        <img src="{{ tea.image.crop.261x183 }}" class="img-fluid w-100 rounded-top" height="183" alt="">
+                        <img src="{{ tea.image.url }}" class="img-fluid w-100 rounded-top" height="183" alt="">
                     </div>
                     <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">{{ tea.category.name }}</div>
                     <div class="p-4 border border-secondary border-top-0 rounded-bottom">

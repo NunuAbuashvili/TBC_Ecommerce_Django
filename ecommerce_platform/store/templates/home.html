@@ -146,7 +146,7 @@
                                         <div class="rounded position-relative tea-item">
                                             <a href="{% url 'store:product_page' product.slug %}" class="tea-link">
                                                 <div class="tea-img">
-                                                    <img src="{{ product.image.crop.261x183 }}" class="img-fluid w-100 rounded-top" alt="">
+                                                    <img src="{{ product.image.url }}" class="img-fluid w-100 rounded-top product-image" alt="">
                                                 </div>
                                                 <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">{{ product.category.name }}</div>
                                                 <div class="p-4 border border-secondary border-top-0 rounded-bottom">
@@ -259,7 +259,7 @@
                         <div class="row align-items-center">
                             <div class="col-6">
                                 <a href="{% url 'store:product_page' top_rated_product.slug %}" class="tea-link">
-                                    <img src="{{ top_rated_product.image.crop.142x142 }}" class="img-fluid rounded-circle w-100" alt="">
+                                    <img src="{{ top_rated_product.image.url }}" class="img-fluid rounded-circle w-100" alt="">
                                 </a>
                             </div>
                             <form action="{% url 'order:add_to_cart' top_rated_product.id %}" method="post">

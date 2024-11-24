@@ -15,7 +15,6 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    "modeltranslation",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -23,11 +22,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "debug_toolbar",
-    "versatileimagefield",
     "crispy_forms",
     "crispy_bootstrap4",
     "django_countries",
-    "rosetta",
     "corsheaders",
     "accounts.apps.AccountsConfig",
     "store.apps.StoreConfig",
@@ -179,8 +176,6 @@ LANGUAGES = [
 LOCALE_PATHS = [
     BASE_DIR / 'locale',
 ]
-
-MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
